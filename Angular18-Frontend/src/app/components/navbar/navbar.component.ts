@@ -51,8 +51,12 @@ export class NavbarComponent {
     this.router.navigate(['/login']);
   }
 
-  registerRedirect() {
-    this.router.navigate(['/register']);
+  registerAdminRedirect() {
+    this.router.navigate(['/registerAdmin']);
+  }
+
+  registerUserRedirect() {
+    this.router.navigate(['/registerUser']);
   }
 
   editUser() {

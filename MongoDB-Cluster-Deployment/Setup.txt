@@ -25,3 +25,11 @@ show collections
 db.Books.insertMany([{ "Name": "Design Patterns", "Price": 54.93, "Category": "Computers",
 "Author": "Ralph Johnson" }, { "Name": "Clean Code", "Price": 43.15, "Category":
 "Computers","Author": "Robert C. Martin" }])
+
+Open MongoDB Compass and connect to the cluster using the connection string: mongodb://localhost:27017/
+
+Import initial data with the admin from Identity.Users.json file into the 'Identity' collection using MongoDB Compass.
+
+username: admin
+email: admin@example.com
+pasword: Password123!

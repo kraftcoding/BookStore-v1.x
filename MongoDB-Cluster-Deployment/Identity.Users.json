@@ -1,0 +1,41 @@
+[{
+  "_id": {
+    "$binary": {
+      "base64": "lMElKwjJQmSEvk0tvs7xDA==",
+      "subType": "04"
+    }
+  },
+  "UserName": "admin",
+  "NormalizedUserName": "ADMIN",
+  "Email": "admin@example.com",
+  "NormalizedEmail": "ADMIN@EXAMPLE.COM",
+  "EmailConfirmed": false,
+  "PasswordHash": "AQAAAAIAAYagAAAAENsgSjkx6O84lJcMxmWGl5I5oRd0iWSxGY/kdnkkSJ+/LHsz3DMx+KV3MhlEz0lrJw==",
+  "SecurityStamp": "P2ILDJK4STMG7H65ZX4ZKCHH73WURK5Y",
+  "ConcurrencyStamp": "12241041-21b6-4e85-bdb1-702d41ef3e1c",
+  "PhoneNumber": null,
+  "PhoneNumberConfirmed": false,
+  "TwoFactorEnabled": false,
+  "LockoutEnd": null,
+  "LockoutEnabled": true,
+  "AccessFailedCount": 0,
+  "Version": 1,
+  "CreatedOn": {
+    "$date": "2025-12-27T15:27:54.412Z"
+  },
+  "Claims": [],
+  "Roles": [
+    {
+      "$binary": {
+        "base64": "uivcCGrQTQC+8ja2s19EQQ==",
+        "subType": "04"
+      }
+    }
+  ],
+  "Logins": [],
+  "Tokens": [],
+  "RefreshToken": "ze5/E+qBY8OHWiqk0bXIKjdExCsUJH2VrAiLZKqO91gnHttg56Ayy5qsH2TUuvViDucNg3VcjjWAolCG/SYgJg==",
+  "RefreshTokenExpiryTime": {
+    "$date": "2026-01-03T15:28:33.465Z"
+  }
+}]

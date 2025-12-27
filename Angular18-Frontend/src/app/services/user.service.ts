@@ -62,9 +62,16 @@ export class UserService {
     );
   }
 
-  register(dto: any): any {
+  registerUser(dto: any): any {
     return this.http.post(
       environment.apiUrl + '/authenticate/registerUser',
+      dto
+    );
+  }
+
+   registerAdmin(dto: any): any {
+    return this.http.post(
+      environment.apiUrl + '/authenticate/registerAdmin',
       dto
     );
   }

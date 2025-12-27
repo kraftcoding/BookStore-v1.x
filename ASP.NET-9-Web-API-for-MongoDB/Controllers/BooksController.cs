@@ -16,7 +16,7 @@ public class BooksController : ControllerBase
         _booksService = booksService;
 
     [HttpGet]
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public async Task<List<Book>> Get() =>
         await _booksService.GetAsync();
 

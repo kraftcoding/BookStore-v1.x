@@ -30,9 +30,9 @@ namespace BookStoreApi.Controllers
             this.signInManager = signInManager;
             this.configuration = configuration;
         }
-
-       
+               
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         [Route("registerUser")]
         public async Task<IActionResult> RegisterUser(User user)
         {
@@ -64,8 +64,8 @@ namespace BookStoreApi.Controllers
             return Ok(new Response { Status = "Success", Message = "User created successfully!" });
         }
 
-
         [HttpPost]
+        //[Authorize(Roles = "Admin")]
         [Route("registerAdmin")]
         public async Task<IActionResult> RegisterAdmin(User user)
         {
@@ -97,17 +97,14 @@ namespace BookStoreApi.Controllers
             return Ok(new Response { Status = "Success", Message = "User created successfully!" });
         }
         
-
         [HttpPost]
         [Route("login")]
         public async Task<IActionResult> Login([FromBody] LoginModel model)
-        {
-            //ApplicationUser? appUser = await this.userManager.FindByNameAsync(model.Username);
+        {            
             ApplicationUser? appUser = await this.userManager.FindByEmailAsync(model.Email);
 
             if (appUser != null && await this.userManager.CheckPasswordAsync(appUser, model.Password))
             {
-
                 var userRoles = await this.userManager.GetRolesAsync(appUser);
 
                 var authClaims = new List<Claim>
@@ -193,6 +190,7 @@ namespace BookStoreApi.Controllers
         }
 
         [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [Route("revoke/{username}")]
         public async Task<IActionResult> Revoke(string username)
@@ -207,6 +205,7 @@ namespace BookStoreApi.Controllers
         }
 
         [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [Route("revoke-all")]
         public async Task<IActionResult> RevokeAll()
@@ -264,6 +263,5 @@ namespace BookStoreApi.Controllers
             return principal;
 
         }
-
     }
 }

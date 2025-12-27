@@ -31,11 +31,11 @@ import { Router } from '@angular/router';
     CommonModule,
   ],
   providers: [DatePipe],
-  templateUrl: './register.component.html',
-  styleUrl: './register.component.scss',
+  templateUrl: './registerAdmin.component.html',
+  styleUrl: './registerAdmin.component.scss',
 })
 
-export class RegisterComponent {
+export class RegisterAdminComponent {
   usernameFormControl = new FormControl('', Validators.required);
   emailFormControl = new FormControl('', [
     Validators.required,
@@ -63,7 +63,7 @@ export class RegisterComponent {
       return;
     }
     this.userService
-      .register({
+      .registerAdmin({
         username: this.usernameFormControl.value,           
         email: this.emailFormControl.value,
         password: this.passwordFormControl.value,
