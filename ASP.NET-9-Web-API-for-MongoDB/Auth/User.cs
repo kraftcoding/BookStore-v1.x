@@ -5,7 +5,7 @@ namespace BookStoreApi.Auth
     public class User
     {
         [Required]
-        public string Name { get; set; }
+        public string UserName { get; set; }
 
         [Required]
         [EmailAddress(ErrorMessage = "Invalid Email")]

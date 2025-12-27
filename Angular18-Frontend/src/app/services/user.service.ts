@@ -42,7 +42,7 @@ export class UserService {
 
   login(dto: any): any {
     return this.http.post(
-      environment.apiUrl + '/ApplicationUsers/LoginUser',
+      environment.apiUrl + '/authenticate/login',
       dto
     );
   }
@@ -50,7 +50,7 @@ export class UserService {
   logout(): any {
     return this.http.post(
       environment.apiUrl +
-        '/ApplicationUsers/LogoutUser/' +
+        '/authenticate/LogoutUser/' +
         localStorage.getItem('Template_email'),
       {}
     );
@@ -58,27 +58,27 @@ export class UserService {
 
   getByEmail(email: string): any {
     return this.http.get(
-      environment.apiUrl + '/ApplicationUsers/GetByEmail/' + email
+      environment.apiUrl + '/authenticate/GetByEmail/' + email
     );
   }
 
   register(dto: any): any {
     return this.http.post(
-      environment.apiUrl + '/ApplicationUsers/RegisterUser',
+      environment.apiUrl + '/authenticate/registerUser',
       dto
     );
   }
 
   getRefreshToken(dto: any) {
     return this.http.post(
-      environment.apiUrl + '/ApplicationUsers/RefreshToken',
+      environment.apiUrl + '/authenticate/refresh-token',
       dto
     );
   }
 
   updateUser(dto: any): any {
     return this.http.put(
-      environment.apiUrl + '/ApplicationUsers/UpdateUser',
+      environment.apiUrl + '/authenticate/UpdateUser',
       dto
     );
   }

@@ -1,13 +1,13 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using BookStoreApi.Auth;
+using JWTRefreshToken.NET6._0.Auth;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Text;
-using JWTRefreshToken.NET6._0.Auth;
-using Microsoft.AspNetCore.Authorization;
 using System.Security.Cryptography;
-using BookStoreApi.Auth;
+using System.Text;
 
 namespace BookStoreApi.Controllers
 {
@@ -31,17 +31,18 @@ namespace BookStoreApi.Controllers
             this.configuration = configuration;
         }
 
+       
         [HttpPost]
         [Route("registerUser")]
         public async Task<IActionResult> RegisterUser(User user)
         {
-            var userExists = await this.userManager.FindByNameAsync(user.Name);
+            var userExists = await this.userManager.FindByNameAsync(user.UserName);
             if (userExists != null)
                 return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User already exists!" });
 
             ApplicationUser appUser = new ApplicationUser
             {
-                UserName = user.Name,
+                UserName = user.Email,
                 SecurityStamp = Guid.NewGuid().ToString(),
                 Email = user.Email
             };
@@ -63,17 +64,18 @@ namespace BookStoreApi.Controllers
             return Ok(new Response { Status = "Success", Message = "User created successfully!" });
         }
 
+
         [HttpPost]
         [Route("registerAdmin")]
         public async Task<IActionResult> RegisterAdmin(User user)
         {
-            var userExists = await this.userManager.FindByNameAsync(user.Name);
+            var userExists = await this.userManager.FindByNameAsync(user.UserName);
             if (userExists != null)
                 return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User already exists!" });
 
             ApplicationUser appUser = new ApplicationUser
             {
-                UserName = user.Name,
+                UserName = user.UserName,
                 SecurityStamp = Guid.NewGuid().ToString(),
                 Email = user.Email
             };
@@ -94,12 +96,15 @@ namespace BookStoreApi.Controllers
 
             return Ok(new Response { Status = "Success", Message = "User created successfully!" });
         }
+        
 
         [HttpPost]
         [Route("login")]
         public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
-            ApplicationUser? appUser = await this.userManager.FindByNameAsync(model.Username);
+            //ApplicationUser? appUser = await this.userManager.FindByNameAsync(model.Username);
+            ApplicationUser? appUser = await this.userManager.FindByEmailAsync(model.Email);
+
             if (appUser != null && await this.userManager.CheckPasswordAsync(appUser, model.Password))
             {
 
@@ -140,7 +145,8 @@ namespace BookStoreApi.Controllers
                 {
                     Token = new JwtSecurityTokenHandler().WriteToken(token),
                     RefreshToken = refreshToken,
-                    Expiration = LocalTime
+                    Expiration = LocalTime,
+                    Email = appUser.Email
                 });
             }
             return Unauthorized();

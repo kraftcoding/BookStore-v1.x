@@ -49,7 +49,7 @@ export class LoginComponent {
 
   login(): void {
     let dto: any = {
-      username: this.emailFormControl.value,
+      email: this.emailFormControl.value,
       password: this.passwordFormControl.value,
       rememberMe: this.rememberMe,
     };
@@ -57,8 +57,8 @@ export class LoginComponent {
     this.userService.login(dto).subscribe(
       (response: any) => {
         console.log(response);
-        let token: any = jwtDecode(response.accessToken);
-        this.userService.setIsAuthenticated(true, token.email);
+        let token: any = jwtDecode(response.Token);
+        this.userService.setIsAuthenticated(true, response.Email);
         this.userService.setJwtToken(response);
         this.toastersService.showSuccess('Login successful');
         this.router.navigate(['/']);

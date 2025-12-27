@@ -2,9 +2,9 @@
     <form class="registration-form">
       <h2>Registration</h2>
       <mat-form-field class="margin-bottom">
-        <mat-label>Full Name</mat-label>
-        <input type="text" matInput [formControl]="fullNameFormControl" placeholder="Ex. John Doe" autocomplete="off">
-        <mat-error *ngIf="fullNameFormControl.hasError('required')">Full Name is required</mat-error>
+        <mat-label>User name</mat-label>
+        <input type="text" matInput [formControl]="usernameFormControl" placeholder="Ex. John" autocomplete="off">
+        <mat-error *ngIf="usernameFormControl.hasError('required')">User name is required</mat-error>
       </mat-form-field>
       <mat-form-field class="margin-bottom">
         <mat-label>Email</mat-label>
@@ -17,17 +17,17 @@
         <input type="password" matInput [formControl]="passwordFormControl" placeholder="Password123!" autocomplete="new-password">
         <mat-error *ngIf="passwordFormControl.hasError('required')">Password is required</mat-error>
       </mat-form-field>
-      <mat-form-field>
+      <!--<mat-form-field>  -->
         <!-- <mat-label>Date of Birth</mat-label> -->
         <!-- <input type="date" matInput [formControl]="dateOfBirthFormControl" placeholder="Date of Birth" autocomplete="off"> -->
         <!-- <mat-error *ngIf="dateOfBirthFormControl.hasError('required')">Date of Birth is required</mat-error> -->
 
-        <mat-label>Date of Birth</mat-label>
+       <!--  <mat-label>Date of Birth</mat-label>
         <input matInput [matDatepicker]="picker" [formControl]="dateOfBirthFormControl">
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
         <mat-error *ngIf="dateOfBirthFormControl.hasError('required')">Date of Birth is required</mat-error>
-      </mat-form-field>
+      </mat-form-field> -->
       <button mat-raised-button color="primary" type="button" (click)="register()">Register</button>
     </form>
   </div>

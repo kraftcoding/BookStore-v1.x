@@ -34,24 +34,24 @@ import { Router } from '@angular/router';
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })
+
 export class RegisterComponent {
-  fullNameFormControl = new FormControl('', Validators.required);
+  usernameFormControl = new FormControl('', Validators.required);
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
   ]);
-
   passwordFormControl = new FormControl('', [
     Validators.required,
     Validators.minLength(4),
   ]);
 
-  dateOfBirthFormControl = new FormControl('', Validators.required);
+  //dateOfBirthFormControl = new FormControl('', Validators.required);
 
   constructor(
     private userService: UserService,
     private toastersService: ToastersService,
-    private datePipe: DatePipe,
+    //private datePipe: DatePipe,
     private router: Router
   ) {}
 
@@ -64,13 +64,13 @@ export class RegisterComponent {
     }
     this.userService
       .register({
-        fullName: this.fullNameFormControl.value,
+        username: this.usernameFormControl.value,           
         email: this.emailFormControl.value,
         password: this.passwordFormControl.value,
-        dateOfBirth: this.datePipe.transform(
-          this.dateOfBirthFormControl.value,
-          'yyyy-MM-dd'
-        ),
+       // dateOfBirth: this.datePipe.transform(
+       //   this.dateOfBirthFormControl.value,
+       //   'yyyy-MM-dd'
+        //),
         subjects: [],
       })
       .subscribe(
@@ -86,10 +86,10 @@ export class RegisterComponent {
 
   isFormValid() {
     return (
-      this.fullNameFormControl.valid &&
+      this.usernameFormControl.valid &&
       this.emailFormControl.valid &&
-      this.passwordFormControl.valid &&
-      this.dateOfBirthFormControl.valid
+      this.passwordFormControl.valid //&&
+      //this.dateOfBirthFormControl.valid
     );
   }
 }
