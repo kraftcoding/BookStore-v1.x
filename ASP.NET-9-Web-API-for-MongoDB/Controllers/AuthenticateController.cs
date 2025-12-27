@@ -30,9 +30,10 @@ namespace BookStoreApi.Controllers
             this.signInManager = signInManager;
             this.configuration = configuration;
         }
-               
+
+        [Authorize]
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")] //Must auth token must be sent the role somehow
         [Route("registerUser")]
         public async Task<IActionResult> RegisterUser(User user)
         {
@@ -64,8 +65,9 @@ namespace BookStoreApi.Controllers
             return Ok(new Response { Status = "Success", Message = "User created successfully!" });
         }
 
+        [Authorize]
         [HttpPost]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         [Route("registerAdmin")]
         public async Task<IActionResult> RegisterAdmin(User user)
         {
