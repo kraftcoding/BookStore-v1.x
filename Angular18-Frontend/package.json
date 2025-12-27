@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^18.0.5",
-    "@angular/cli": "^18.0.5",
+    "@angular/cli": "^18.2.21",
     "@angular/compiler-cli": "^18.0.4",
     "@types/jasmine": "~5.1.0",
     "@typescript-eslint/eslint-plugin": "^7.2.0",

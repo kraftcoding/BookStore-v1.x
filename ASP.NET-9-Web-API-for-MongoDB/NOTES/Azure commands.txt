@@ -1,8 +1,0 @@
-﻿
-az login
-az account list --output table
-az account set --subscription "Azure subscription 1"
-az group create --name kraft-coding --location eastus
-az provider register --namespace Microsoft.ContainerRegistry
-az acr create --resource-group kraft-coding --name kraftcodingacr --sku Basic
-az acr build --registry kraftcodingacr --image azurekubernetesbookswebapinet9:latest .

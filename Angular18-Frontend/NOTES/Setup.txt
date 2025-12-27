@@ -1,0 +1,2 @@
+docker init
+docker build --tag Kraftcoding/angular18-frontend:local .
