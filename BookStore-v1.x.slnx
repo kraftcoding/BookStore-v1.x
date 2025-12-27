@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/MongoDB-Cluster-Deployment/">
+    <File Path="MongoDB-Cluster-Deployment/Setup.txt" />
+  </Folder>
+  <Project Path="Angular18-Frontend/Angular18-Frontend.csproj" />
+  <Project Path="ASP.NET-9-Web-API-for-MongoDB/ASP.NET-9-Web-API-for-MongoDB.csproj" />
+</Solution>

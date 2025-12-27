@@ -1,0 +1,6 @@
+@MongoDB_Books_WebAPI_.NET_8_HostAddress = http://localhost:5122
+
+GET {{MongoDB_Books_WebAPI_.NET_8_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
