@@ -3,10 +3,15 @@ import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, catchError, map, of, switchMap, throwError } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
+import { ToastersService } from 'src/app/services/toasters.service';
 
 @Injectable()
 export class HttpInterceptorService implements HttpInterceptor {
-  constructor(private router: Router, private userService: UserService) {}
+  constructor(
+    private router: Router, 
+    private userService: UserService,
+    private toastersService: ToastersService,
+  ) {}
 
   intercept(
     request: HttpRequest<any>,
@@ -44,7 +49,8 @@ export class HttpInterceptorService implements HttpInterceptor {
       refreshToken: localStorage.getItem('Template_refreshToken'),
     };
     if (!dataToSend.accessToken || !dataToSend.refreshToken) {
-      this.router.navigate(['/']);
+      //this.router.navigate(['/']);
+      this.toastersService.showError('Login unsuccessful');
       return throwError(
         () => new Error('Tokens are missing, redirecting to login page.')
       );

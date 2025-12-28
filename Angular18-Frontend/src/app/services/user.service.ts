@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environments';
 @Injectable({
   providedIn: 'root',
 })
+
 export class UserService {
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
   isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
@@ -34,6 +35,10 @@ export class UserService {
       this.usernameSubject.next('');
     }
     this.isAuthenticatedSubject.next(isAuthenticated);
+  }
+
+  isAuthenticated() {
+    return this.isAuthenticatedSubject.value;  
   }
 
   setUserRoles(request: any) {

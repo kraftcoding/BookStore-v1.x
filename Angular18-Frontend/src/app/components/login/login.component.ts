@@ -62,7 +62,7 @@ export class LoginComponent {
         this.userService.setJwtToken(response);
         this.userService.setUserRoles(response);
         this.toastersService.showSuccess('Login successful');
-        this.router.navigate(['/']);
+        this.router.navigate(['/home']);       
       },
       (error: any) => {
         this.toastersService.handleError(error);

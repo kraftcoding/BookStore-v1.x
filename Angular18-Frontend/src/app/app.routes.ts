@@ -4,11 +4,14 @@ import { RegisterUserComponent } from './components/register-user/registerUser.c
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'registerAdmin', component: RegisterAdminComponent },
-  { path: 'registerUser', component: RegisterUserComponent },
-  { path: 'edit-user', component: EditUserComponent },
-  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent},
+  { path:  '', component: HomeComponent },
+  { path: 'register-admin', component: RegisterAdminComponent, canActivate: [authGuard] },
+  { path: 'register-user', component: RegisterUserComponent, canActivate: [authGuard] },
+  { path: 'edit-user', component: EditUserComponent, canActivate: [authGuard] },
+
 ];

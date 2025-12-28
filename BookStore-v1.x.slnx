@@ -3,6 +3,7 @@
     <File Path="DOCS/BookStore solution - Technical Document.odt" />
   </Folder>
   <Folder Name="/MongoDB-Cluster-Deployment/">
+    <File Path="MongoDB-Cluster-Deployment/Identity.Roles.json" />
     <File Path="MongoDB-Cluster-Deployment/Identity.Users.json" />
     <File Path="MongoDB-Cluster-Deployment/Setup.txt" />
   </Folder>

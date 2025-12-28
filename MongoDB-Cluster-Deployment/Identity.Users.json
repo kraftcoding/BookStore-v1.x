@@ -21,13 +21,13 @@
   "AccessFailedCount": 0,
   "Version": 1,
   "CreatedOn": {
-    "$date": "2025-12-27T15:27:54.412Z"
+    "$date": "2026-01-01T12:00:00.000Z"
   },
   "Claims": [],
   "Roles": [
     {
       "$binary": {
-        "base64": "uivcCGrQTQC+8ja2s19EQQ==",
+        "base64": "CiLixCfzSTu6lWLkbSho7A==",
         "subType": "04"
       }
     }
@@ -36,6 +36,6 @@
   "Tokens": [],
   "RefreshToken": "ze5/E+qBY8OHWiqk0bXIKjdExCsUJH2VrAiLZKqO91gnHttg56Ayy5qsH2TUuvViDucNg3VcjjWAolCG/SYgJg==",
   "RefreshTokenExpiryTime": {
-    "$date": "2026-01-03T15:28:33.465Z"
+    "$date": "2099-01-01T12:00:00.000Z"
   }
 }]

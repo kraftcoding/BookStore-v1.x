@@ -16,12 +16,14 @@ mongosh
 
 show databases
 
+use Identity
+db.createCollection('Users')
+db.createCollection('Roles')
+-- Insert initial admin user into Users collection from provided JSON file
+
 use BookStore
-
 db.createCollection('Books')
-
 show collections
-
 db.Books.insertMany([{ "Name": "Design Patterns", "Price": 54.93, "Category": "Computers",
 "Author": "Ralph Johnson" }, { "Name": "Clean Code", "Price": 43.15, "Category":
 "Computers","Author": "Robert C. Martin" }])
