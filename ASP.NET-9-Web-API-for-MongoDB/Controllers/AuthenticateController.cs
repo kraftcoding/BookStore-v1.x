@@ -145,7 +145,8 @@ namespace BookStoreApi.Controllers
                     Token = new JwtSecurityTokenHandler().WriteToken(token),
                     RefreshToken = refreshToken,
                     Expiration = LocalTime,
-                    Email = appUser.Email
+                    Email = appUser.Email,
+                    Roles = userRoles
                 });
             }
             return Unauthorized();

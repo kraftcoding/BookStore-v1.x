@@ -23,9 +23,11 @@ import { async } from 'rxjs';
   styleUrl: './navbar.component.scss',
 })
 export class NavbarComponent {
-  isLoggedIn$ = this.userService.isAuthenticated$;
+  isLoggedIn$ = this.userService.isAuthenticated$;  
+  isAdmin$ = this.userService.isAdmin$;  
   username$ = this.userService.username$;
-  username: any;
+  username: any;  
+  
 
   constructor(
     private router: Router,
@@ -33,13 +35,17 @@ export class NavbarComponent {
     private toastersService: ToastersService
   ) {}
 
-  ngOnInit() {
+  ngOnInit() {    
     this.username$.subscribe((response) => {
       this.username = signal<string>(response || '');
     });
     this.username = signal<string>(
       localStorage.getItem('Template_email') || ''
     );
+    
+    // this.isAdmin = signal<string>(
+    //   localStorage.getItem('Template_roles')?.includes("Admin") ? "true" : "false"
+    //);
     // if (!this.username) {
     //   this.username = signal<string>(
     //     localStorage.getItem('Template_email') || ''

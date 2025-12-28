@@ -60,6 +60,7 @@ export class LoginComponent {
         let token: any = jwtDecode(response.Token);
         this.userService.setIsAuthenticated(true, response.Email);
         this.userService.setJwtToken(response);
+        this.userService.setUserRoles(response);
         this.toastersService.showSuccess('Login successful');
         this.router.navigate(['/']);
       },

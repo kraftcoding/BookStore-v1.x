@@ -10,12 +10,18 @@ export class UserService {
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
   isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
 
+  private isAdminSubject = new BehaviorSubject<boolean>(false);
+  isAdmin$ = this.isAdminSubject.asObservable();
+
   private usernameSubject = new BehaviorSubject<string>('');
   username$ = this.usernameSubject.asObservable();
 
   constructor(private http: HttpClient) {
     if (localStorage.getItem('Template_email')) {
       this.isAuthenticatedSubject.next(true);
+    }
+    if(localStorage.getItem('Template_roles')?.includes("Admin") ? true : false){
+      this.isAdminSubject.next(true);
     }
   }
 
@@ -30,9 +36,13 @@ export class UserService {
     this.isAuthenticatedSubject.next(isAuthenticated);
   }
 
-  setJwtToken(token: any) {
-    localStorage.setItem('Template_jwt', token.accessToken);
-    localStorage.setItem('Template_refreshToken', token.refreshToken);
+  setUserRoles(request: any) {
+    localStorage.setItem('Template_roles', request.Roles);    
+  }
+
+  setJwtToken(request: any) {
+    localStorage.setItem('Template_jwt', request.Token);
+    localStorage.setItem('Template_refreshToken', request.RefreshToken);
   }
 
   clearJwtToken() {

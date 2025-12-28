@@ -11,8 +11,10 @@
         @if (isLoggedIn$ | async){
             <button mat-button color="primary" [matMenuTriggerFor]="menu">Hello, {{username()}}</button>
             <mat-menu #menu="matMenu">
-              <button mat-menu-item color="primary" (click)="registerAdminRedirect()">Register admin</button>
-              <button mat-menu-item color="primary" (click)="registerUserRedirect()">Register user</button>
+              @if (isAdmin$ | async){
+                <button mat-menu-item color="primary" (click)="registerAdminRedirect()">Register admin</button>
+                <button mat-menu-item color="primary" (click)="registerUserRedirect()">Register user</button>
+              }
               <button mat-menu-item color="primary" (click)="editUser()">Edit profile</button>
               <button mat-menu-item color="primary" (click)="logout()">Logout</button>
             </mat-menu>
