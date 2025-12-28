@@ -57,12 +57,37 @@ export class NavbarComponent {
     this.router.navigate(['/login']);
   }
 
-  registerAdminRedirect() {
+  registerAdmin() {
     this.router.navigate(['/register-admin']);
   }
 
-  registerUserRedirect() {
+  registerUser() {
     this.router.navigate(['/register-user']);
+  }
+
+  revokeUser() {
+    this.router.navigate(['/revoke-user']);
+  }
+
+  revokeAll() {
+    //this.router.navigate(['/revoke-all']);
+    this.userService
+      .revokeAll({ 
+        subjects: [],
+      })
+      .subscribe(
+        (response: any) => {
+          this.router.navigate(['/']);
+          this.toastersService.showSuccess('Successfully revoked (all)');
+        },
+        (error: any) => {
+          this.toastersService.handleError(error);
+        }
+      );
+  }
+
+  deleteUser() {
+    this.router.navigate(['/delete-user']);
   }
 
   editUser() {

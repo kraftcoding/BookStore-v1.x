@@ -1,0 +1,12 @@
+<div class="registration-container">
+    <form class="registration-form">
+      <h2>Delete user</h2>     
+      <mat-form-field class="margin-bottom">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com" autocomplete="off">
+        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">Please enter a valid email address</mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">Email is required</mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="button" (click)="deleteUser()">Revoke</button>
+    </form>
+  </div>

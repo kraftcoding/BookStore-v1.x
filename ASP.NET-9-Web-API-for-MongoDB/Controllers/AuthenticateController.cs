@@ -195,14 +195,29 @@ namespace BookStoreApi.Controllers
         [Authorize]
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        [Route("revoke/{username}")]
-        public async Task<IActionResult> Revoke(string username)
+        [Route("revoke/{email}")]
+        public async Task<IActionResult> Revoke(string email)
         {
-            var user = await this.userManager.FindByNameAsync(username);
-            if (user == null) return BadRequest("Invalid user name");
+            var user = await this.userManager.FindByEmailAsync(email);
+            if (user == null) return BadRequest("Invalid email");
 
             user.RefreshToken = null;
             await this.userManager.UpdateAsync(user);
+
+            return NoContent();
+        }
+
+        [Authorize]
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        [Route("delete/{email}")]
+        public async Task<IActionResult> Delete(string email)
+        {
+            var user = await this.userManager.FindByEmailAsync(email);
+            if (user == null) return BadRequest("Invalid email");
+
+            user.RefreshToken = null;
+            await this.userManager.DeleteAsync(user);
 
             return NoContent();
         }

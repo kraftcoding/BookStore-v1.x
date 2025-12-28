@@ -4,6 +4,8 @@ import { RegisterUserComponent } from './components/register-user/registerUser.c
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { RevokeUserComponent } from './components/revoke-user/revokeUser.component';
+import { DeleteUserComponent } from './components/delete-user/deleteUser.component';
 import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
@@ -13,5 +15,7 @@ export const routes: Routes = [
   { path: 'register-admin', component: RegisterAdminComponent, canActivate: [authGuard] },
   { path: 'register-user', component: RegisterUserComponent, canActivate: [authGuard] },
   { path: 'edit-user', component: EditUserComponent, canActivate: [authGuard] },
-
+  { path: 'revoke-user', component: RevokeUserComponent, canActivate: [authGuard] },
+  { path: 'revoke-all', component: DeleteUserComponent, canActivate: [authGuard] },
+  { path: 'delete-user', component: DeleteUserComponent, canActivate: [authGuard] },
 ];

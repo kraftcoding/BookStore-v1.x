@@ -111,4 +111,25 @@ export class UserService {
       dto
     );
   }
+
+  revokeUser(dto: any): any {
+    return this.http.post(
+      environment.apiUrl + '/authenticate/revoke/' + dto.email ,
+      dto
+    );
+  }
+
+  revokeAll(dto: any) {
+    return this.http.post(
+      environment.apiUrl + '/authenticate/revoke-all',
+      dto
+    );
+  }
+
+  deleteUser(dto: any): any {
+    return this.http.post(
+      environment.apiUrl + '/authenticate/delete/' + dto.email ,
+      dto
+    );
+  }
 }
