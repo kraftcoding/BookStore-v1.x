@@ -33,7 +33,7 @@ namespace BookStoreApi.Controllers
 
         [Authorize]
         [HttpPost]
-        [Authorize(Roles = "Admin")] //Must auth token must be sent the role somehow
+        [Authorize(Roles = "Admin")]
         [Route("registerUser")]
         public async Task<IActionResult> RegisterUser(User user)
         {
@@ -66,8 +66,7 @@ namespace BookStoreApi.Controllers
         }
 
         [Authorize]
-        [HttpPut]
-        [Authorize(Roles = "Admin")] //Must auth token must be sent the role somehow
+        [HttpPut]        
         [Route("updateUser")]
         public async Task<IActionResult> updateUser(LoginModel model)
         {
@@ -87,7 +86,6 @@ namespace BookStoreApi.Controllers
 
             return Ok(new Response { Status = "Success", Message = "User updated successfully!" });
         }
-
 
         [Authorize]
         [HttpPost]
