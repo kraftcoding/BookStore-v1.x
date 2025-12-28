@@ -80,7 +80,7 @@ export class UserService {
 
   getByEmail(email: string): any {
     return this.http.get(
-      environment.apiUrl + '/authenticate/GetByEmail/' + email
+      environment.apiUrl + '/authenticate/getUser/' + email
     );
   }
 

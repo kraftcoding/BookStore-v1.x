@@ -66,6 +66,30 @@ namespace BookStoreApi.Controllers
         }
 
         [Authorize]
+        [HttpPut]
+        [Authorize(Roles = "Admin")] //Must auth token must be sent the role somehow
+        [Route("updateUser")]
+        public async Task<IActionResult> updateUser(LoginModel model)
+        {
+            ApplicationUser? appUser = await this.userManager.FindByEmailAsync(model.Email);
+            if (appUser != null && await this.userManager.CheckPasswordAsync(appUser, model.Password))
+            {
+                appUser.PhoneNumber = model.PhoneNumber;                
+
+                var result = await this.userManager.UpdateAsync(appUser);
+                if (!result.Succeeded)
+                    return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User update failed! Please check user details and try again." });
+            }
+            else
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "Error validating user!" });
+            }
+
+            return Ok(new Response { Status = "Success", Message = "User updated successfully!" });
+        }
+
+
+        [Authorize]
         [HttpPost]
         [Authorize(Roles = "Admin")]
         [Route("registerAdmin")]
@@ -220,6 +244,18 @@ namespace BookStoreApi.Controllers
             await this.userManager.DeleteAsync(user);
 
             return NoContent();
+        }
+
+        [Authorize]
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        [Route("getUser/{email}")]
+        public async Task<ApplicationUser> GetUser(string email)
+        {
+            var user = await this.userManager.FindByEmailAsync(email);
+            if (user == null) return null;          
+
+            return user;
         }
 
         [Authorize]

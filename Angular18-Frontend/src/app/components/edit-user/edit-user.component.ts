@@ -35,10 +35,9 @@ import { UserService } from 'src/app/services/user.service';
   styleUrl: './edit-user.component.scss',
 })
 export class EditUserComponent {
-  fullNameFormControl = new FormControl('', Validators.required);
-  emailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.email,
+  emailFormControl = new FormControl('', Validators.required);
+  phoneNumberFormControl = new FormControl('', [
+    Validators.required
   ]);
 
   passwordFormControl = new FormControl('', [
@@ -46,12 +45,11 @@ export class EditUserComponent {
     Validators.minLength(4),
   ]);
 
-  dateOfBirthFormControl = new FormControl('', Validators.required);
+  createdOnFormControl = new FormControl('', Validators.required);
 
   constructor(
     private userService: UserService,
-    private toastersService: ToastersService,
-    private datePipe: DatePipe,
+    private toastersService: ToastersService,   
     private router: Router
   ) {}
 
@@ -60,9 +58,8 @@ export class EditUserComponent {
       .getByEmail(localStorage.getItem('Template_email')!)
       .subscribe(
         (response: any) => {
-          this.fullNameFormControl.setValue(response.fullName);
-          this.emailFormControl.setValue(response.email);
-          this.dateOfBirthFormControl.setValue(response.dateOfBirth);
+          this.emailFormControl.setValue(response.Email);
+          this.phoneNumberFormControl.setValue(response.PhoneNumber);
         },
         (error: any) => {
           this.toastersService.handleError(error);
@@ -74,13 +71,9 @@ export class EditUserComponent {
     if (!this.isFormValid())
       return this.toastersService.showError('Please fill in all fields');
     const dto = {
-      fullName: this.fullNameFormControl.value,
       email: this.emailFormControl.value,
+      phoneNumber: this.phoneNumberFormControl.value,
       password: this.passwordFormControl.value,
-      dateOfBirth: this.datePipe.transform(
-        this.dateOfBirthFormControl.value,
-        'yyyy-MM-dd'
-      ),
     };
 
     this.userService.updateUser(dto).subscribe(
@@ -89,17 +82,17 @@ export class EditUserComponent {
         this.router.navigate(['/']);
       },
       (error: any) => {
-        this.toastersService.handleError(error);
+        //this.toastersService.handleError(error);
+        return this.toastersService.showError(error.error.Message);
       }
     );
   }
 
   isFormValid() {
     return (
-      this.fullNameFormControl.valid &&
       this.emailFormControl.valid &&
-      this.passwordFormControl.valid &&
-      this.dateOfBirthFormControl.valid
+      this.phoneNumberFormControl.valid &&
+      this.passwordFormControl.valid      
     );
   }
 }

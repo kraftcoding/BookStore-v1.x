@@ -9,5 +9,7 @@ namespace JWTRefreshToken.NET6._0.Auth
 
         [Required(ErrorMessage = "Password is required")]
         public string? Password { get; set; }
+       
+        public string? PhoneNumber { get; set; }
     }
 }
