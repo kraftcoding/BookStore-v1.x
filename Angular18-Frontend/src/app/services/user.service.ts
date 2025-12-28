@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environments';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +18,7 @@ export class UserService {
   private usernameSubject = new BehaviorSubject<string>('');
   username$ = this.usernameSubject.asObservable();
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     if (localStorage.getItem('Template_email')) {
       this.isAuthenticatedSubject.next(true);
     }
@@ -38,7 +39,13 @@ export class UserService {
   }
 
   isAuthenticated() {
-    return this.isAuthenticatedSubject.value;  
+    if(this.isAuthenticatedSubject.value){
+      return true;
+    }
+    else{
+      this.router.navigate(['/login']);
+      return false;
+    }    
   }
 
   setUserRoles(request: any) {
