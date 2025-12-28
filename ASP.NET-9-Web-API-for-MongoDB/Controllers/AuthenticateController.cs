@@ -245,7 +245,6 @@ namespace BookStoreApi.Controllers
         }
 
         [Authorize]
-        [Authorize(Roles = "Admin")]
         [HttpGet]
         [Route("getUser/{email}")]
         public async Task<ApplicationUser> GetUser(string email)
