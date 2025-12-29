@@ -1,0 +1,62 @@
+<mxfile host="Electron" modified="2025-12-29T07:11:45.223Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.2.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="F_Jiwh36G4tnlg266qHz" version="24.2.5" type="device">
+  <diagram name="Page-1" id="jXjDositfKP0HepiMTg8">
+    <mxGraphModel dx="1434" dy="844" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="EreZib1RkCMV6j12XVg2-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="EreZib1RkCMV6j12XVg2-1" target="EreZib1RkCMV6j12XVg2-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="EreZib1RkCMV6j12XVg2-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="EreZib1RkCMV6j12XVg2-1" target="EreZib1RkCMV6j12XVg2-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="EreZib1RkCMV6j12XVg2-1" value="Primary node" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/database_server.svg;" vertex="1" parent="1">
+          <mxGeometry x="500" y="335" width="41" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="EreZib1RkCMV6j12XVg2-2" value="Secondary node" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/database_server.svg;" vertex="1" parent="1">
+          <mxGeometry x="790" y="400" width="41" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="EreZib1RkCMV6j12XVg2-3" value="Secondary node" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/database_server.svg;" vertex="1" parent="1">
+          <mxGeometry x="790" y="265" width="41" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="EreZib1RkCMV6j12XVg2-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="EreZib1RkCMV6j12XVg2-4" target="EreZib1RkCMV6j12XVg2-7">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="340" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="EreZib1RkCMV6j12XVg2-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="EreZib1RkCMV6j12XVg2-4" target="EreZib1RkCMV6j12XVg2-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="EreZib1RkCMV6j12XVg2-4" value="Client application" style="points=[[0.03,0.03,0],[0.5,0,0],[0.97,0.03,0],[1,0.4,0],[0.97,0.745,0],[0.5,1,0],[0.03,0.745,0],[0,0.4,0]];verticalLabelPosition=bottom;sketch=0;html=1;verticalAlign=top;aspect=fixed;align=center;pointerEvents=1;shape=mxgraph.cisco19.workstation;fillColor=#005073;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="200" y="345" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="EreZib1RkCMV6j12XVg2-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="EreZib1RkCMV6j12XVg2-5" target="EreZib1RkCMV6j12XVg2-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="EreZib1RkCMV6j12XVg2-5" value="Replication" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="650" y="286" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="EreZib1RkCMV6j12XVg2-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="EreZib1RkCMV6j12XVg2-6" target="EreZib1RkCMV6j12XVg2-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="EreZib1RkCMV6j12XVg2-6" value="Replication" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="650" y="410" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="EreZib1RkCMV6j12XVg2-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="EreZib1RkCMV6j12XVg2-7" target="EreZib1RkCMV6j12XVg2-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="EreZib1RkCMV6j12XVg2-7" value="Read" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="315" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="EreZib1RkCMV6j12XVg2-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="EreZib1RkCMV6j12XVg2-8" target="EreZib1RkCMV6j12XVg2-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="490" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="EreZib1RkCMV6j12XVg2-8" value="Write" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="385" width="80" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
