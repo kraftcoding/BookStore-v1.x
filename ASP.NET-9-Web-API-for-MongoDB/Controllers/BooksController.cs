@@ -15,13 +15,13 @@ public class BooksController : ControllerBase
     public BooksController(BooksService booksService) =>
         _booksService = booksService;
 
-    [HttpGet]
-    [Authorize(Roles = "Admin")]
+    [Authorize]
+    [HttpGet]    
     public async Task<List<Book>> Get() =>
         await _booksService.GetAsync();
 
-    [HttpGet("{id:length(24)}")]
-    [Authorize(Roles = "Admin")]
+    [Authorize]
+    [HttpGet("{id:length(24)}")]   
     public async Task<ActionResult<Book>> Get(string id)
     {
         var book = await _booksService.GetAsync(id);
@@ -34,6 +34,7 @@ public class BooksController : ControllerBase
         return book;
     }
 
+    [Authorize]
     [HttpPost]
     [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Post(Book newBook)
@@ -43,6 +44,7 @@ public class BooksController : ControllerBase
         return CreatedAtAction(nameof(Get), new { id = newBook.Id }, newBook);
     }
 
+    [Authorize]
     [HttpPut("{id:length(24)}")]
     [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Update(string id, Book updatedBook)
@@ -61,6 +63,7 @@ public class BooksController : ControllerBase
         return NoContent();
     }
 
+    [Authorize]
     [HttpDelete("{id:length(24)}")]
     [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Delete(string id)

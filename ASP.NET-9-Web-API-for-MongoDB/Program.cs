@@ -31,8 +31,8 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
        .AddMongoDbStores<ApplicationUser, ApplicationRole, Guid>
 (
-//"mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=6000&appName=mongosh+2.5.10", "Identity"
-"mongodb://host.docker.internal:27017/?directConnection=true&serverSelectionTimeoutMS=6000&appName=mongosh+2.5.10", "Identity"
+"mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=6000&appName=mongosh+2.5.10", "Identity"
+//"mongodb://host.docker.internal:27017/?directConnection=true&serverSelectionTimeoutMS=6000&appName=mongosh+2.5.10", "Identity"
 ).
 AddDefaultTokenProviders();
 

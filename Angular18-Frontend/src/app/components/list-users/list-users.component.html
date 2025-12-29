@@ -1,17 +1,25 @@
 <div class="view-form">
     <form class="view-form">
       <h2>User list</h2>
-     <ul class="list-group">
-      <li
-        class="list-group-item"
-        *ngFor="let ListUser of ListUsers; let i = index"
-        [class.active]="i == currentIndex"       
-      >
-        {{  ListUser.UserName + " | " + 
-            ListUser.Email + " | " + 
-            (!!ListUser.PhoneNumber ? ListUser.PhoneNumber : 'No phone number' ) + " | " + 
-            (!!ListUser.RefreshToken ? 'Active' : 'Revoked' )}}
-      </li>
-    </ul>
+      <mat-table  class="list-group-item" [dataSource]="ListUsers">       
+        <ng-container matColumnDef="username">
+          <mat-header-cell *matHeaderCellDef> User Name </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.UserName}} </mat-cell>
+        </ng-container>       
+        <ng-container matColumnDef="email">
+          <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.Email}} </mat-cell>
+        </ng-container>
+         <ng-container matColumnDef="phonenumber">
+          <mat-header-cell *matHeaderCellDef> Phone Number </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{(!!row.PhoneNumber ? row.PhoneNumber : 'n/a' ) }} </mat-cell>
+        </ng-container>
+         <ng-container matColumnDef="revoked">
+          <mat-header-cell *matHeaderCellDef> Revoked </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{(!!row.RefreshToken ? 'No' : 'yes' )}} </mat-cell>
+        </ng-container>       
+        <mat-header-row *matHeaderRowDef="['username', 'email', 'phonenumber', 'revoked']"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: ['username', 'email', 'phonenumber', 'revoked']"></mat-row>
+      </mat-table>
     </form>
   </div>

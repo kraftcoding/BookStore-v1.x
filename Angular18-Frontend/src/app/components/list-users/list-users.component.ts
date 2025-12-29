@@ -17,6 +17,8 @@ import { ListUser } from 'src/app/models/ListUser.model';
 import { ToastersService } from 'src/app/services/toasters.service';
 import { UserService } from 'src/app/services/user.service';
 
+import {MatTableModule} from '@angular/material/table'
+
 @Component({
   selector: 'app-list-users',
   standalone: true,
@@ -30,6 +32,7 @@ import { UserService } from 'src/app/services/user.service';
     MatDatepickerModule,
     MatNativeDateModule,
     CommonModule,
+    MatTableModule
   ],
   providers: [DatePipe],
   templateUrl: './list-users.component.html',
@@ -37,7 +40,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UsersComponent {
  
-  ListUsers?: ListUser[];  
+  ListUsers: ListUser[];  
   currentIndex = -1;
   title = '';
 
