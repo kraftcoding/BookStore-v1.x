@@ -48,6 +48,11 @@ export class NavbarComponent {
     this.router.navigate(['/login']);
   }
 
+  usersRedirect() {
+    this.router.navigate(['/users']);
+  }
+
+
   registerAdmin() {
     this.router.navigate(['/register-admin']);
   }

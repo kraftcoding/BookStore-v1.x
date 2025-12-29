@@ -1,0 +1,17 @@
+<div class="view-form">
+    <form class="view-form">
+      <h2>User list</h2>
+     <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let ListUser of ListUsers; let i = index"
+        [class.active]="i == currentIndex"       
+      >
+        {{  ListUser.UserName + " | " + 
+            ListUser.Email + " | " + 
+            (!!ListUser.PhoneNumber ? ListUser.PhoneNumber : 'No phone number' ) + " | " + 
+            (!!ListUser.RefreshToken ? 'Active' : 'Revoked' )}}
+      </li>
+    </ul>
+    </form>
+  </div>

@@ -84,6 +84,12 @@ export class UserService {
     );
   }
 
+  getUsers(): any {
+    return this.http.get(
+      environment.apiUrl + '/authenticate/getUsers'
+    );
+  }
+
   registerUser(dto: any): any {
     return this.http.post(
       environment.apiUrl + '/authenticate/registerUser',

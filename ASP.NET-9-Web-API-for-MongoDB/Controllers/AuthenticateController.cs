@@ -43,7 +43,7 @@ namespace BookStoreApi.Controllers
 
             ApplicationUser appUser = new ApplicationUser
             {
-                UserName = user.Email,
+                UserName = user.UserName,
                 SecurityStamp = Guid.NewGuid().ToString(),
                 Email = user.Email,
                 RefreshToken = GenerateRefreshToken()
@@ -253,6 +253,18 @@ namespace BookStoreApi.Controllers
             if (user == null) return null;          
 
             return user;
+        }
+
+        [Authorize]
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        [Route("getUsers")]
+        public async Task<List<ApplicationUser>> GetUsers()
+        {
+            var users =  this.userManager.Users.ToList();
+            if (users == null) return null;
+
+            return users;
         }
 
         [Authorize]

@@ -35,7 +35,8 @@ import { UserService } from 'src/app/services/user.service';
   styleUrl: './edit-user.component.scss',
 })
 export class EditUserComponent {
-  emailFormControl = new FormControl('', Validators.required);
+  //emailFormControl = new FormControl('', Validators.required);
+  emailFormControl = new FormControl('');
   phoneNumberFormControl = new FormControl('', [
     Validators.required
   ]);
@@ -91,7 +92,7 @@ export class EditUserComponent {
 
   isFormValid() {
     return (
-      this.emailFormControl.valid &&
+      //this.emailFormControl.valid &&
       this.phoneNumberFormControl.valid &&
       this.passwordFormControl.valid      
     );
