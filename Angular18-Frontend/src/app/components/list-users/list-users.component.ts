@@ -18,6 +18,8 @@ import { ToastersService } from 'src/app/services/toasters.service';
 import { UserService } from 'src/app/services/user.service';
 
 import {MatTableModule} from '@angular/material/table'
+//import {SelectionModel} from '@angular/cdk/collections'
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-list-users',
@@ -32,17 +34,23 @@ import {MatTableModule} from '@angular/material/table'
     MatDatepickerModule,
     MatNativeDateModule,
     CommonModule,
-    MatTableModule
+    MatTableModule,
+    MatPaginatorModule    
   ],
   providers: [DatePipe],
   templateUrl: './list-users.component.html',
   styleUrl: './list-users.component.scss',
 })
+
+
+
 export class UsersComponent {
  
-  ListUsers: ListUser[];  
-  currentIndex = -1;
-  title = '';
+  ListUsers: ListUser[]; 
+
+  //initialSelection = [];
+  //allowMultiSelect = true;
+  //selection = new SelectionModel<ListUser>(this.allowMultiSelect, this.initialSelection);
 
   constructor(
     private userService: UserService,
@@ -50,7 +58,25 @@ export class UsersComponent {
     private router: Router
   ) {}
 
-  ngOnInit() {
+  /** Whether the number of selected elements matches the total number of rows. */
+  //isAllSelected() {
+  //  const numSelected = this.selection.selected.length;
+  //  const numRows = this.ListUsers.length;
+  //  return numSelected == numRows;
+  //}
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+ // toggleAllRows() {
+ //   this.isAllSelected() ?
+ //       this.selection.clear() :
+ //       this.ListUsers.forEach(row => this.selection.select(row));
+ // }
+
+  gotoDetails(id: string){
+    
+  }
+
+  ngOnInit() {    
     this.userService
       .getUsers()
       .subscribe(

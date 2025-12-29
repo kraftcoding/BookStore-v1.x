@@ -1364,6 +1364,17 @@ var ListKeyManager = class {
     }
   }
 };
+var ActiveDescendantKeyManager = class extends ListKeyManager {
+  setActiveItem(index) {
+    if (this.activeItem) {
+      this.activeItem.setInactiveStyles();
+    }
+    super.setActiveItem(index);
+    if (this.activeItem) {
+      this.activeItem.setActiveStyles();
+    }
+  }
+};
 var FocusKeyManager = class extends ListKeyManager {
   constructor() {
     super(...arguments);
@@ -5171,8 +5182,6 @@ var _MatInternalFormField = __MatInternalFormField;
 })();
 
 export {
-  Directionality,
-  BidiModule,
   Platform,
   getSupportedInputTypes,
   normalizePassiveListenerOptions,
@@ -5182,13 +5191,6 @@ export {
   _getFocusedElementPierceShadowDom,
   _getEventTarget,
   _isTestEnvironment,
-  coerceBooleanProperty,
-  coerceNumberProperty,
-  _isNumberValue,
-  coerceArray,
-  coerceCssPixelValue,
-  coerceElement,
-  coerceStringArray,
   BACKSPACE,
   ENTER,
   ESCAPE,
@@ -5201,15 +5203,30 @@ export {
   UP_ARROW,
   RIGHT_ARROW,
   DOWN_ARROW,
+  A,
   hasModifierKey,
+  coerceBooleanProperty,
+  coerceNumberProperty,
+  _isNumberValue,
+  coerceArray,
+  coerceCssPixelValue,
+  coerceElement,
+  coerceStringArray,
   ObserversModule,
+  addAriaReferencedId,
+  removeAriaReferencedId,
+  AriaDescriber,
+  ActiveDescendantKeyManager,
   FocusKeyManager,
   CdkTrapFocus,
   isFakeMousedownFromScreenReader,
   isFakeTouchstartFromScreenReader,
+  LiveAnnouncer,
   FocusMonitor,
   CdkMonitorFocus,
   A11yModule,
+  Directionality,
+  BidiModule,
   VERSION2 as VERSION,
   AnimationCurves,
   AnimationDurations,
@@ -5256,4 +5273,4 @@ export {
   MatRippleLoader,
   _MatInternalFormField
 };
-//# sourceMappingURL=chunk-PX4LAEMR.js.map
+//# sourceMappingURL=chunk-JHCBWHDA.js.map

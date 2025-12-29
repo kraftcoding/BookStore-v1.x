@@ -1,7 +1,24 @@
 <div class="view-form">
     <form class="view-form">
       <h2>User list</h2>
-      <mat-table  class="list-group-item" [dataSource]="ListUsers">       
+      <mat-table  class="list-group-item" [dataSource]="ListUsers">     
+        <!--
+        <ng-container matColumnDef="select">
+          <th mat-header-cell *matHeaderCellDef>
+            <mat-checkbox (change)="$event ? toggleAllRows() : null"
+                          [checked]="selection.hasValue() && isAllSelected()"
+                          [indeterminate]="selection.hasValue() && !isAllSelected()">
+            </mat-checkbox>
+          </th>
+          <td mat-cell *matCellDef="let row">
+            <mat-checkbox (click)="$event.stopPropagation()"
+                          (change)="$event ? selection.toggle(row) : null"
+                          [checked]="selection.isSelected(row)">
+            </mat-checkbox>
+          </td>
+        </ng-container> 
+        -->
+        
         <ng-container matColumnDef="username">
           <mat-header-cell *matHeaderCellDef> User Name </mat-header-cell>
           <mat-cell *matCellDef="let row"> {{row.UserName}} </mat-cell>
@@ -17,9 +34,15 @@
          <ng-container matColumnDef="revoked">
           <mat-header-cell *matHeaderCellDef> Revoked </mat-header-cell>
           <mat-cell *matCellDef="let row"> {{(!!row.RefreshToken ? 'No' : 'yes' )}} </mat-cell>
-        </ng-container>       
-        <mat-header-row *matHeaderRowDef="['username', 'email', 'phonenumber', 'revoked']"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: ['username', 'email', 'phonenumber', 'revoked']"></mat-row>
+        </ng-container> 
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef>  </mat-header-cell>
+          <mat-cell *matCellDef="let row"> <button container-shape (click)="gotoDetails(row.Id)"> Details </button></mat-cell>
+        </ng-container>  
+         
+        <mat-header-row *matHeaderRowDef="['username', 'email', 'phonenumber', 'revoked', 'id']"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: [ 'username', 'email', 'phonenumber', 'revoked', 'id']"></mat-row>
       </mat-table>
+      <mat-paginator></mat-paginator>
     </form>
   </div>
