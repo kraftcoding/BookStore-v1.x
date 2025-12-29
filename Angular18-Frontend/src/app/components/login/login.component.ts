@@ -34,6 +34,14 @@ export class LoginComponent {
     Validators.email,
   ]);
 
+  ngOnInit() {
+      if(this.userService.isAuthenticated()){
+        this.toastersService.showSuccess('You are already loged');
+        this.router.navigate(['/home']); 
+      }        
+    }
+
+
   passwordFormControl = new FormControl('', [
     Validators.required,
     Validators.minLength(4),

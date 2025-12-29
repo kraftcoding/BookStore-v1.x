@@ -59,6 +59,7 @@ export class EditUserComponent {
       .subscribe(
         (response: any) => {
           this.emailFormControl.setValue(response.Email);
+          this.emailFormControl.disable();
           this.phoneNumberFormControl.setValue(response.PhoneNumber);
         },
         (error: any) => {

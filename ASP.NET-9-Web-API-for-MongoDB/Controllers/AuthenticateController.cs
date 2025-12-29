@@ -68,7 +68,7 @@ namespace BookStoreApi.Controllers
         [Authorize]
         [HttpPut]        
         [Route("updateUser")]
-        public async Task<IActionResult> updateUser(LoginModel model)
+        public async Task<IActionResult> UpdateUser(LoginModel model)
         {
             ApplicationUser? appUser = await this.userManager.FindByEmailAsync(model.Email);
             if (appUser != null && await this.userManager.CheckPasswordAsync(appUser, model.Password))

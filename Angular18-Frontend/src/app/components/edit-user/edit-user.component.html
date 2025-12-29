@@ -2,17 +2,17 @@
     <form class="edit-form">
       <h2>Edit users phone number</h2>
       <mat-form-field class="margin-bottom">
+        <mat-label>Email</mat-label>
+        <input type="text" matInput [formControl]="emailFormControl" placeholder="Ex. john@example.com" autocomplete="off" >       
+      </mat-form-field>   
+      <mat-form-field class="margin-bottom">
         <mat-label>Phone Number</mat-label>
         <input type="phoneNumber" matInput [formControl]="phoneNumberFormControl" placeholder="Ex. pat@example.com" autocomplete="off">
         <mat-error *ngIf="phoneNumberFormControl.hasError('phoneNumber') && !phoneNumberFormControl.hasError('required')">Please enter a valid phone number</mat-error>
         <mat-error *ngIf="phoneNumberFormControl.hasError('required')">Phone number is required</mat-error>
-      </mat-form-field>
+      </mat-form-field>         
       <mat-form-field class="margin-bottom">
-        <mat-label>Email</mat-label>
-        <input type="text" matInput [formControl]="emailFormControl" placeholder="Ex. John Doe" autocomplete="off" >       
-      </mat-form-field>      
-      <mat-form-field class="margin-bottom">
-        <mat-label>Password</mat-label>
+        <mat-label>Set the current password to validate</mat-label>
         <input type="password" matInput [formControl]="passwordFormControl" placeholder="Password123!" autocomplete="new-password">
         <mat-error *ngIf="passwordFormControl.hasError('required')">Password is required</mat-error>
       </mat-form-field>      
