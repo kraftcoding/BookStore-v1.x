@@ -45,7 +45,8 @@ namespace BookStoreApi.Controllers
             {
                 UserName = user.Email,
                 SecurityStamp = Guid.NewGuid().ToString(),
-                Email = user.Email
+                Email = user.Email,
+                RefreshToken = GenerateRefreshToken()
             };
 
             var result = await this.userManager.CreateAsync(appUser, user.Password);
@@ -54,13 +55,12 @@ namespace BookStoreApi.Controllers
 
             if (!await this.roleManager.RoleExistsAsync(UserRoles.Admin))
                 await this.roleManager.CreateAsync(new ApplicationRole() { Name = UserRoles.Admin });
+            
             if (!await this.roleManager.RoleExistsAsync(UserRoles.User))
                 await this.roleManager.CreateAsync(new ApplicationRole() { Name = UserRoles.User });
 
-                if (await this.roleManager.RoleExistsAsync(UserRoles.User))
-                {
-                await this.userManager.AddToRoleAsync(appUser, UserRoles.User);
-                }
+            if (await this.roleManager.RoleExistsAsync(UserRoles.User))
+                await this.userManager.AddToRoleAsync(appUser, UserRoles.User);                
 
             return Ok(new Response { Status = "Success", Message = "User created successfully!" });
         }
@@ -127,7 +127,7 @@ namespace BookStoreApi.Controllers
         {            
             ApplicationUser? appUser = await this.userManager.FindByEmailAsync(model.Email);
 
-            if (appUser != null && await this.userManager.CheckPasswordAsync(appUser, model.Password))
+            if (appUser != null && await this.userManager.CheckPasswordAsync(appUser, model.Password) && !string.IsNullOrEmpty(appUser.RefreshToken))
             {
                 var userRoles = await this.userManager.GetRolesAsync(appUser);
 

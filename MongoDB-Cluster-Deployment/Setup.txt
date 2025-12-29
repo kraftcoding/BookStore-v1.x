@@ -1,37 +1,87 @@
-Create MongoDB Cluster with initial data:
+Setup
+-----
+
+Here the steps to create MongoDB Cluster with initial data.
+
+We run Docker Desktop application, and after that, we pull the MongoDb official image from Docker Hub to our local host.
+
+
+Create a Docker network
+-----------------------
+
+The first step is to create a Docker network. This network will let each of your containers running in this network see each other. To create a network, run the docker network create command
+
+docker pull mongo
 
 docker network create mongoCluster
 
-docker run -d --rm -p 27017:27017 --name mongo1 --network mongoCluster mongo:latest
-docker run -d --rm -p 27018:27017 --name mongo2 --network mongoCluster mongo:latest
-docker run -d --rm -p 27019:27017 --name mongo3 --network mongoCluster mongo:latest
 
-mongod --replSet myReplicaSet --bind_ip localhost,mongo1
-mongod --replSet myReplicaSet --bind_ip localhost,mongo2
-mongod --replSet myReplicaSet --bind_ip localhost,mongo3
+Start MongoDB Instances
+-----------------------
 
-docker exec -it mongo1 mongosh --eval "rs.initiate({ _id: 'myReplicaSet', members: [{_id: 0, host:'mongo1', priority: 3}, {_id: 1, host: 'mongo2', priority: 2}, {_id: 2, host: 'mongo3', priority: 1}]})"
+You are now ready to start your first container with MongoDB. To start the container, use the docker run command.
 
-mongosh
+docker run -d --rm -p 27017:27017 --name mongo1 --network mongoCluster mongo:5 mongod --replSet myReplicaSet --bind_ip localhost,mongo1
 
-show databases
+The command that will be executed once to start the container is started, it will create a new mongod instance ready for a replica set. Start two other containers. You will need to use a different name and a different port for those two.
 
-use Identity
-db.createCollection('Users')
-db.createCollection('Roles')
--- Insert initial admin user into Users collection from provided JSON file
+docker run -d --rm -p 27018:27017 --name mongo2 --network mongoCluster mongo:5 mongod --replSet myReplicaSet --bind_ip localhost,mongo2
+ 
+docker run -d --rm -p 27019:27017 --name mongo3 --network mongoCluster mongo:5 mongod --replSet myReplicaSet --bind_ip localhost,mongo3
 
-use BookStore
-db.createCollection('Books')
-show collections
-db.Books.insertMany([{ "Name": "Design Patterns", "Price": 54.93, "Category": "Computers",
-"Author": "Ralph Johnson" }, { "Name": "Clean Code", "Price": 43.15, "Category":
-"Computers","Author": "Robert C. Martin" }])
+You can use docker ps to validate that they are running.
 
-Open MongoDB Compass and connect to the cluster using the connection string: mongodb://localhost:27017/
+Or open the Docker application and check the containers.,
 
-Import initial data with the admin from Identity.Users.json file into the 'Identity' collection using MongoDB Compass.
 
-username: admin
-email: admin@example.com
-pasword: Password123!
+Initiate the Replica Set
+------------------------
+
+The next step is to create the actual replica set with the three members. To do so, you will need to use the MongoDB Shell. This CLI (command-line interface) tool is available with the default MongoDB installation or installed independently.
+However, if you don’t have the tool installed on your laptop, it is possible to use mongosh available inside containers with the docker exec command.
+docker exec -it mongo1 mongosh --eval "rs.initiate({
+ _id: 'myReplicaSet',
+ members: [
+   {_id: 0, host: 'mongo1'},
+   {_id: 1, host: 'mongo2'},
+   {_id: 2, host: 'mongo3'}
+ ]
+})"
+
+
+This command tells Docker to run the mongosh tool inside the container named mongo1. mongosh will then try to evaluate the rs.initiate() command to initiate the replica set. If the command was successfully executed, you should see a message from the mongosh CLI indicating the version numbers of MongoDB and Mongosh, followed by a message indicating:{ ok: 1 }.
+
+
+Test and Verify the Replica Set
+-------------------------------
+
+You should now have a running replica set. If you want to verify that everything was configured correctly, you can use the mongosh CLI tool to evaluate the rs.status() instruction. This will provide you with the status of your replica set, including the list of members.
+docker exec -it mongo1 mongosh --eval "rs.status()"
+
+If we launch mongosh comand, we will see that by default we will be connected to the primary node.
+
+As we can notice, the connection string is:
+
+mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.5.10
+
+If we connect with Compass we will see the initial database configuration settings for the replica set.
+
+
+Initial deployment
+------------------
+
+To deploy the solution first add the images and deploy the containers as it has been detailed in the correspondent document sections.
+
+Follow the next steps to add the admin user.
+
+    1. Execute mongosh then launch the next commands
+       use Identity
+       db.createCollection('Users')
+       db.createCollection('Roles')
+    2. Open MongoDB Compass and connect to the cluster. We can find the connection string in the “Docker Custer Setup” section of this document. 
+    3. Import initial data with the admin user and roles from Identity.Users.json and Identity.Roles.json files into the 'Identity' collection using MongoDB Compass.
+	
+    CREDENTIALS:
+    username: admin
+    email: admin@example.com
+    pasword: Password123!

@@ -22,12 +22,12 @@ import { async } from 'rxjs';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
 })
+
 export class NavbarComponent {
   isLoggedIn$ = this.userService.isAuthenticated$;  
   isAdmin$ = this.userService.isAdmin$;  
   username$ = this.userService.username$;
-  username: any;  
-  
+  username: any;   
 
   constructor(
     private router: Router,
@@ -41,16 +41,7 @@ export class NavbarComponent {
     });
     this.username = signal<string>(
       localStorage.getItem('Template_email') || ''
-    );
-    
-    // this.isAdmin = signal<string>(
-    //   localStorage.getItem('Template_roles')?.includes("Admin") ? "true" : "false"
-    //);
-    // if (!this.username) {
-    //   this.username = signal<string>(
-    //     localStorage.getItem('Template_email') || ''
-    //   );
-    // }
+    );    
   }
 
   loginRedirect() {
@@ -70,7 +61,6 @@ export class NavbarComponent {
   }
 
   revokeAll() {
-    //this.router.navigate(['/revoke-all']);
     this.userService
       .revokeAll({ 
         subjects: [],
