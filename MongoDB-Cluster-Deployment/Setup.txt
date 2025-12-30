@@ -21,13 +21,13 @@ Start MongoDB Instances
 
 You are now ready to start your first container with MongoDB. To start the container, use the docker run command.
 
-docker run -d --rm -p 27017:27017 --name mongo1 --network mongoCluster mongo:5 mongod --replSet myReplicaSet --bind_ip localhost,mongo1
+docker run -d --rm -p 27017:27017 --name mongo1 --network mongoCluster mongo:latest mongod --replSet myReplicaSet --bind_ip localhost,mongo1
 
 The command that will be executed once to start the container is started, it will create a new mongod instance ready for a replica set. Start two other containers. You will need to use a different name and a different port for those two.
 
-docker run -d --rm -p 27018:27017 --name mongo2 --network mongoCluster mongo:5 mongod --replSet myReplicaSet --bind_ip localhost,mongo2
+docker run -d --rm -p 27018:27017 --name mongo2 --network mongoCluster mongo:latest --replSet myReplicaSet --bind_ip localhost,mongo2
  
-docker run -d --rm -p 27019:27017 --name mongo3 --network mongoCluster mongo:5 mongod --replSet myReplicaSet --bind_ip localhost,mongo3
+docker run -d --rm -p 27019:27017 --name mongo3 --network mongoCluster mongo:latest --replSet myReplicaSet --bind_ip localhost,mongo3
 
 You can use docker ps to validate that they are running.
 
@@ -39,6 +39,7 @@ Initiate the Replica Set
 
 The next step is to create the actual replica set with the three members. To do so, you will need to use the MongoDB Shell. This CLI (command-line interface) tool is available with the default MongoDB installation or installed independently.
 However, if you don’t have the tool installed on your laptop, it is possible to use mongosh available inside containers with the docker exec command.
+
 docker exec -it mongo1 mongosh --eval "rs.initiate({
  _id: 'myReplicaSet',
  members: [
@@ -47,6 +48,8 @@ docker exec -it mongo1 mongosh --eval "rs.initiate({
    {_id: 2, host: 'mongo3'}
  ]
 })"
+
+NOTE: If you get an error because of the single quotes, try executing the command with double quotes instead or execute mongosh without the --eval parameter and then type the rs.initiate() command directly in the CLI.
 
 
 This command tells Docker to run the mongosh tool inside the container named mongo1. mongosh will then try to evaluate the rs.initiate() command to initiate the replica set. If the command was successfully executed, you should see a message from the mongosh CLI indicating the version numbers of MongoDB and Mongosh, followed by a message indicating:{ ok: 1 }.
