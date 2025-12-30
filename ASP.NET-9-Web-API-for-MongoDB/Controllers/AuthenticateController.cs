@@ -258,6 +258,18 @@ namespace BookStoreApi.Controllers
         [Authorize]
         [Authorize(Roles = "Admin")]
         [HttpGet]
+        [Route("getUserDetails/{id}")]
+        public async Task<ApplicationUser> GetUserDetails(string id)
+        {
+            var user = await this.userManager.FindByIdAsync(id);
+            if (user == null) return null;
+
+            return user;
+        }
+
+        [Authorize]
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
         [Route("getUsers")]
         public async Task<List<ApplicationUser>> GetUsers()
         {

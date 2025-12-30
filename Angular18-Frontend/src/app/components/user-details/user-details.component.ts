@@ -12,8 +12,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { Router } from '@angular/router';
-import { ListUser } from 'src/app/models/ListUser.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UserDetails } from 'src/app/models/UserDetails.model';
 import { ToastersService } from 'src/app/services/toasters.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -22,7 +22,7 @@ import {MatTableModule} from '@angular/material/table'
 import {MatPaginatorModule} from '@angular/material/paginator';
 
 @Component({
-  selector: 'app-list-users',
+  selector: 'app-user-details',
   standalone: true,
   imports: [
     FormsModule,
@@ -38,50 +38,29 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatPaginatorModule    
   ],
   providers: [DatePipe],
-  templateUrl: './list-users.component.html',
-  styleUrl: './list-users.component.scss',
+  templateUrl: './user-details.component.html',
+  styleUrl: './user-details.component.scss',
 })
 
-
-
-export class UsersComponent {
+export class UsersDetailsComponent {
  
-  ListUsers: ListUser[]; 
-
-  //initialSelection = [];
-  //allowMultiSelect = true;
-  //selection = new SelectionModel<ListUser>(this.allowMultiSelect, this.initialSelection);
+  UserDetails: UserDetails; 
 
   constructor(
     private userService: UserService,
     private toastersService: ToastersService,   
-    private router: Router
+    private router: Router,
+     private route: ActivatedRoute,
   ) {}
 
-  /** Whether the number of selected elements matches the total number of rows. */
-  //isAllSelected() {
-  //  const numSelected = this.selection.selected.length;
-  //  const numRows = this.ListUsers.length;
-  //  return numSelected == numRows;
-  //}
-
-  /** Selects all rows if they are not all selected; otherwise clear selection. */
- // toggleAllRows() {
- //   this.isAllSelected() ?
- //       this.selection.clear() :
- //       this.ListUsers.forEach(row => this.selection.select(row));
- // }
-
-  gotoDetails(id: string){
-    this.router.navigate(['/user-details/' + id]);
+  ngOnInit() {  
+    this.getUserDetails(this.route.snapshot.params['id']);      
   }
 
-  ngOnInit() {    
-    this.userService
-      .getUsers()
-      .subscribe(
+  getUserDetails(id: string): void {
+    this.userService.getUserDetails(id).subscribe(
         (response: any) => {
-          this.ListUsers = response;
+          this.UserDetails = response;
         },
         (error: any) => {
           this.toastersService.handleError(error);

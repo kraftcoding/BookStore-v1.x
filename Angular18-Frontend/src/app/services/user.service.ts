@@ -83,6 +83,12 @@ export class UserService {
       environment.apiUrl + '/authenticate/getUser/' + email
     );
   }
+  
+  getUserDetails(id: string): any {
+    return this.http.get(
+      environment.apiUrl + '/authenticate/getUserDetails/' + id
+    );
+  }
 
   getUsers(): any {
     return this.http.get(

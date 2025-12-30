@@ -1,0 +1,13 @@
+<div class="view-form">
+    <form class="view-form">
+       <h2>User details</h2>
+         <div>
+            <label><strong>Id:</strong> {{ UserDetails.Id }}</label>
+            <label><strong>User name:</strong> {{ UserDetails.UserName }}</label>
+            <label><strong>Email:</strong> {{ UserDetails.Email }}</label>
+            <label><strong>PhoneNumber:</strong> {{(!!UserDetails.PhoneNumber ? UserDetails.PhoneNumber : 'n/a' ) }}</label>
+            <label><strong>RefreshToken:</strong> {{(!!UserDetails.RefreshToken ? 'No' : 'yes' )}}</label>
+            <label><strong>Roles:</strong> {{ UserDetails.Roles }}</label>
+          </div>
+    </form>
+  </div>
