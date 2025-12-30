@@ -5,4 +5,5 @@ export class UserDetails {
     PhoneNumber : any;
     RefreshToken: any;
     Roles: any;
+    RefreshTokenExpiryTime: any;
 }

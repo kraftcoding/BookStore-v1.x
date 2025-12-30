@@ -5,9 +5,10 @@
             <label><strong>Id:</strong> {{ UserDetails.Id }}</label>
             <label><strong>User name:</strong> {{ UserDetails.UserName }}</label>
             <label><strong>Email:</strong> {{ UserDetails.Email }}</label>
-            <label><strong>PhoneNumber:</strong> {{(!!UserDetails.PhoneNumber ? UserDetails.PhoneNumber : 'n/a' ) }}</label>
-            <label><strong>RefreshToken:</strong> {{(!!UserDetails.RefreshToken ? 'No' : 'yes' )}}</label>
-            <label><strong>Roles:</strong> {{ UserDetails.Roles }}</label>
+            <label><strong>Phone Number:</strong> {{(!!UserDetails.PhoneNumber ? UserDetails.PhoneNumber : 'n/a' ) }}</label>
+            <label><strong>RefreshToken:</strong> {{(!!UserDetails.RefreshToken ? 'yes' : 'no' )}}</label>
+            <label><strong>Role Id:</strong> {{ UserDetails.Roles }}</label>
+            <label><strong>Refresh Token Expiry Time:</strong> {{ UserDetails.RefreshTokenExpiryTime }}</label>
           </div>
     </form>
   </div>
