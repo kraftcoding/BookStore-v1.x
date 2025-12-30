@@ -1,6 +1,7 @@
 <Solution>
   <Folder Name="/DOCS/">
     <File Path="DOCS/BookStore solution - Technical Document.odt" />
+    <File Path="Test Users.txt" />
   </Folder>
   <Folder Name="/MongoDB-Cluster-Deployment/">
     <File Path="MongoDB-Cluster-Deployment/Identity.Roles.json" />

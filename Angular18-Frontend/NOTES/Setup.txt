@@ -1,8 +1,2 @@
 docker init
 docker build --tag Kraftcoding/angular18-frontend:local .
-
-admin@example.com
-Password123!
-
-user@example.com
-Password123!
