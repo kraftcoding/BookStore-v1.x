@@ -11,7 +11,21 @@ import { NavbarComponent } from '../navbar/navbar.component';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
+
 export class HomeComponent {
   title: any = 'Frontend';
   date: any = new Date();
+  isReloaded: any;
+ 
+  ngOnInit() {
+      this.isReloaded = localStorage.getItem('Template_isReloaded')
+      if(this.isReloaded == 'false') this.reloadPage();
+      
+  }
+
+  reloadPage(){
+    localStorage.setItem('Template_isReloaded', 'true');
+    window.location.reload();
+  }
+
 }

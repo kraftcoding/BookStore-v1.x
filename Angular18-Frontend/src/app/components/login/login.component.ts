@@ -70,6 +70,7 @@ export class LoginComponent {
         this.userService.setJwtToken(response);
         this.userService.setUserRoles(response);
         this.toastersService.showSuccess('Login successful');
+        localStorage.setItem('Template_isReloaded', 'false');
         this.router.navigate(['/home']);       
       },
       (error: any) => {
