@@ -18,6 +18,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-home',
@@ -43,14 +45,14 @@ export class HomeComponent {
   titleFormControl = new FormControl('', Validators.required);
 
    constructor(
-      private bookService: BookService,
-      private toastersService: ToastersService,     
+     
+      private toastersService: ToastersService,
+      private router: Router,
     ) {}
  
-  ngOnInit() {
-      this.isReloaded = localStorage.getItem('Template_isReloaded')
+  ngOnInit() {    
+        this.isReloaded = localStorage.getItem('Template_isReloaded')
       if(this.isReloaded == 'false') this.reloadPage();
-      
   }
 
   reloadPage(){
@@ -59,20 +61,12 @@ export class HomeComponent {
   }
 
   searchBookByTitle(): void {
+   
      if (!this.isFormValid()) {
       this.toastersService.showError('Please fill all fields');
       return;
     }
-    this.bookService.findByTitle(
-      this.titleFormControl.value
-    ).subscribe(
-        (response: any) => {
-          this.Book = response;
-        },
-        (error: any) => {
-          this.toastersService.handleError(error);
-        }
-      );
+     this.router.navigate(['listsearch-book/' + this.titleFormControl.value]);
   }
 
   isFormValid() {

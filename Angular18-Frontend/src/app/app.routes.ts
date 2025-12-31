@@ -12,6 +12,7 @@ import { UsersDetailsComponent } from './components/user-details/user-details.co
 import { RegisterBookComponent } from './components/register-book/registerBook.component';
 import { ListBooksComponent } from './components/list-books/listBooks.component';
 import { BookDetailsComponent } from './components/book-deails/book-details.component';
+import { ListSearchBooksComponent } from './components/listsearch-books/listsearch-books.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent},
@@ -28,4 +29,5 @@ export const routes: Routes = [
   { path: 'register-book', component: RegisterBookComponent, canActivate: [authGuard] },
   { path: 'list-books', component: ListBooksComponent},
   { path: 'book-details/:id', component: BookDetailsComponent},
+  { path: 'listsearch-book/:id', component: ListSearchBooksComponent},
 ];

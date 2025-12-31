@@ -4,7 +4,7 @@
         <!-- Add your logo here -->
         <img src="assets/bookstore_logo.jpg" alt="Logo"  />
       </div>
-      <button mat-button color="primary" (click)="homeRedirect()">Home</button>
+      <button mat-button color="primary" (click)="homeRedirect()">Search</button>
       @if (isLoggedIn$ | async){        
          @if (isAdmin$ | async){
             <button mat-button color="primary" (click)="registerBook()">Register Book</button>                     
