@@ -2,10 +2,11 @@
   <main class="main">
    <div class="content">
       <div class="left-side">
+        <h6>Search by title:</h6>
         <form class="search-form">
           <mat-form-field class="margin-bottom">          
             <input type="text" matInput [formControl]="titleFormControl" placeholder="Ex. Around the World in Eighty" autocomplete="off">
-            <mat-error *ngIf="titleFormControl.hasError('required')">User name is required</mat-error>
+            <mat-error *ngIf="titleFormControl.hasError('required')">Search keyword required</mat-error>
           </mat-form-field>
           <button mat-raised-button color="primary" type="button" (click)="searchBookByTitle()">Search</button>
         </form>
