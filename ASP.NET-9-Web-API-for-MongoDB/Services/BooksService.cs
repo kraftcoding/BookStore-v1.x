@@ -28,6 +28,9 @@ namespace BookStoreApi.Services
         public async Task<Book?> GetAsync(string id) =>
             await _booksCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
 
+        public async Task<List<Book>?> GetByTitleAsync(string title) =>
+           await _booksCollection.Find(x => x.Title.Contains(title)).ToListAsync();
+
         public async Task CreateAsync(Book newBook) =>
             await _booksCollection.InsertOneAsync(newBook);
 

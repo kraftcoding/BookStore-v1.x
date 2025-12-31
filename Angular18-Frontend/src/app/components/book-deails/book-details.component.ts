@@ -14,13 +14,9 @@ import { MatInputModule } from '@angular/material/input';
 import { ToastersService } from 'src/app/services/toasters.service';
 import { BookService } from 'src/app/services/book.service';
 import { CommonModule, DatePipe } from '@angular/common';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Book } from 'src/app/models/Book.model';
 
-import {MatTableModule} from '@angular/material/table'
-//import {SelectionModel} from '@angular/cdk/collections'
-import {MatPaginatorModule} from '@angular/material/paginator';
-import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -35,52 +31,32 @@ import { UserService } from 'src/app/services/user.service';
     MatDatepickerModule,
     MatNativeDateModule,
     CommonModule,
-    MatTableModule,
-    MatPaginatorModule
   ],
   providers: [DatePipe],
-  templateUrl: './listBooks.component.html',
-  styleUrl: './listBooks.component.scss',
+  templateUrl: './book-details.component.html',
+  styleUrl: './book-details.component.scss',
 })
 
-export class ListBooksComponent {
+export class BookDetailsComponent {
 
-  ListBook: Book[]; 
-  isAdmin$ = this.userService.isAdmin$;  
-  isLoggedIn$ = this.userService.isAuthenticated$;  
+  Book: Book; 
 
   constructor(
     private bookService: BookService,
     private toastersService: ToastersService,
     private datePipe: DatePipe,
     private router: Router,
-    private userService: UserService,
+    private route: ActivatedRoute
   ) {}
 
- gotoDetails(id: string){
-    this.router.navigate(['book-details/' + id]);
+  ngOnInit(): void {
+    this.getBookDetails(this.route.snapshot.params['id']); 
   }
 
-  deleteBook(id: string){
-    this.bookService
-      .delete(id)
-      .subscribe(
+  getBookDetails(id: string): void {
+    this.bookService.getBooksDetails(id).subscribe(
         (response: any) => {
-          window.location.reload();
-          this.toastersService.showSuccess('Successfully deleted');
-        },
-        (error: any) => {
-          this.toastersService.handleError(error);
-        }
-      );
-  }
-
-  ngOnInit() {    
-    this.bookService
-      .getBooks()
-      .subscribe(
-        (response: any) => {
-          this.ListBook = response;
+          this.Book = response;
         },
         (error: any) => {
           this.toastersService.handleError(error);

@@ -4,14 +4,14 @@
         <!-- Add your logo here -->
         <img src="assets/bookstore_logo.jpg" alt="Logo"  />
       </div>
-      @if (isLoggedIn$ | async){
-        <button mat-button color="primary" (click)="homeRedirect()">Home</button>
+      <button mat-button color="primary" (click)="homeRedirect()">Home</button>
+      @if (isLoggedIn$ | async){        
          @if (isAdmin$ | async){
-            <button mat-button color="primary" (click)="registerBook()">Register Book</button>
-            <button mat-button color="primary" (click)="listBooks()">Books</button>            
+            <button mat-button color="primary" (click)="registerBook()">Register Book</button>                     
             <button mat-button color="primary" (click)="usersRedirect()">Users</button>
-         }
+         }          
       }
+      <button mat-button color="primary" (click)="listBooks()">Books</button>  
     </div>
     <div class="right-side">
         @if (isLoggedIn$ | async){

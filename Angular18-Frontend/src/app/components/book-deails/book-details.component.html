@@ -1,0 +1,17 @@
+<div class="view-form">
+    <form class="view-form">
+       <h6>Books details</h6>
+         <div>
+            <label><strong>Id:</strong> {{(!! this.Book.Id ?  this.Book.Id : 'n/a' ) }}</label>
+            <label><strong>Title:</strong> {{  this.Book.Title }}</label>
+            <label><strong>Ids:</strong> {{(!! this.Book.Ids ?  this.Book.Ids : 'n/a' ) }}</label>
+            <label><strong>Authors:</strong> {{(!! this.Book.Authors ?  this.Book.Authors : 'n/a' ) }}</label>
+            <label><strong>category:</strong> {{(!!Book.Category ? Book.Category : 'n/a' ) }}</label>
+            <label><strong>Published:</strong> {{(!!Book.Published ? Book.Published : 'n/a' ) }}</label>
+            <label><strong>Publisher:</strong> {{(!!Book.Publisher ? Book.Publisher : 'n/a' ) }}</label>
+            <label><strong>Series:</strong> {{(!!Book.Series ? Book.Series : 'n/a' ) }}</label>
+            <label><strong>Tags:</strong> {{(!!Book.Tags ? Book.Tags : 'n/a' ) }}</label>
+            <label><strong>Formats:</strong> {{(!!Book.Formats ? Book.Formats : 'n/a' ) }}</label>  
+          </div>
+    </form>
+  </div>

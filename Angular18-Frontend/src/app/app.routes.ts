@@ -11,12 +11,13 @@ import { authGuard } from './guards/auth.guard';
 import { UsersDetailsComponent } from './components/user-details/user-details.component';
 import { RegisterBookComponent } from './components/register-book/registerBook.component';
 import { ListBooksComponent } from './components/list-books/listBooks.component';
+import { BookDetailsComponent } from './components/book-deails/book-details.component';
 
 export const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'home', component: HomeComponent, canActivate: [authGuard]},
-  { path: 'users', component: UsersComponent, canActivate: [authGuard]},
-  { path:  '', component: HomeComponent, canActivate: [authGuard] },
+  { path: 'login', component: LoginComponent},
+  { path: 'home', component: HomeComponent},
+  { path:  '', component: HomeComponent },
+  { path: 'users', component: UsersComponent, canActivate: [authGuard]}, 
   { path: 'register-admin', component: RegisterAdminComponent, canActivate: [authGuard] },
   { path: 'register-user', component: RegisterUserComponent, canActivate: [authGuard] },
   { path: 'edit-user', component: EditUserComponent, canActivate: [authGuard] },
@@ -25,5 +26,6 @@ export const routes: Routes = [
   { path: 'delete-user', component: DeleteUserComponent, canActivate: [authGuard] },
   { path: 'user-details/:id', component: UsersDetailsComponent, canActivate: [authGuard] },
   { path: 'register-book', component: RegisterBookComponent, canActivate: [authGuard] },
-  { path: 'list-books', component: ListBooksComponent, canActivate: [authGuard] },
+  { path: 'list-books', component: ListBooksComponent},
+  { path: 'book-details/:id', component: BookDetailsComponent},
 ];

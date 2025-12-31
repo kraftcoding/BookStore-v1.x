@@ -15,10 +15,25 @@ public class BooksController : ControllerBase
     public BooksController(BooksService booksService) =>
         _booksService = booksService;
 
-    [Authorize]
+    //[Authorize]
     [HttpGet]    
     public async Task<List<Book>> Get() =>
         await _booksService.GetAsync();
+
+    [HttpGet]
+    [Route("search/{title}")]
+    public async Task<List<Book>> Search(string title)
+    {
+        var book = await _booksService.GetByTitleAsync(title);
+
+        if (book is null)
+        {
+            return null;
+        }
+
+        return book;
+    }
+
 
     [Authorize]
     [HttpGet("{id:length(24)}")]   

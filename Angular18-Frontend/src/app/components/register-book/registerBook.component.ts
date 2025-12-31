@@ -12,7 +12,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { ToastersService } from 'src/app/services/toasters.service';
-import { bookService } from 'src/app/services/book.service';
+import { BookService } from 'src/app/services/book.service';
 import { CommonModule, DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
 
@@ -49,7 +49,7 @@ export class RegisterBookComponent {
   modifiedFormControl = new FormControl(''); 
 
   constructor(
-    private bookService: bookService,
+    private bookService: BookService,
     private toastersService: ToastersService,
     private datePipe: DatePipe,
     private router: Router
@@ -97,7 +97,6 @@ export class RegisterBookComponent {
   isFormValid() {
     return (
       this.titleFormControl.valid 
-      //this.publishedFormControl.valid
     );
   }
 }

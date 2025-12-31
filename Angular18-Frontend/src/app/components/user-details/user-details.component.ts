@@ -50,7 +50,7 @@ export class UsersDetailsComponent {
     private userService: UserService,
     private toastersService: ToastersService,   
     private router: Router,
-     private route: ActivatedRoute,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {  

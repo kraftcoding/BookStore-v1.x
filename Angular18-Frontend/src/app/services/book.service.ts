@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 
-export class bookService {
+export class BookService {
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
   isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
 
@@ -34,15 +34,27 @@ export class bookService {
     );
   }
 
-   getBooks(): any {
+  getBooks(): any {
     return this.http.get(
       environment.apiUrl + '/books'
+    );
+  }
+
+  findByTitle(title: any): any {
+    return this.http.get(
+      environment.apiUrl + '/books/search/' + title
     );
   }
 
   delete(id: string): any {
     return this.http.delete(
       environment.apiUrl + '/books/' + id
+    );
+  }
+
+  getBooksDetails(id: string): any {
+    return this.http.get(
+      environment.apiUrl +'/books/' + id
     );
   }
   
