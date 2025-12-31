@@ -39,6 +39,12 @@ export class bookService {
       environment.apiUrl + '/books'
     );
   }
+
+  delete(id: string): any {
+    return this.http.delete(
+      environment.apiUrl + '/books/' + id
+    );
+  }
   
   /*
   getByEmail(email: string): any {

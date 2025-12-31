@@ -59,7 +59,17 @@ export class ListBooksComponent {
   }
 
   deleteBook(id: string){
-    console.log();
+    this.bookService
+      .delete(id)
+      .subscribe(
+        (response: any) => {
+          window.location.reload();
+          this.toastersService.showSuccess('Successfully deleted');
+        },
+        (error: any) => {
+          this.toastersService.handleError(error);
+        }
+      );
   }
 
   ngOnInit() {    

@@ -85,7 +85,7 @@ export class RegisterBookComponent {
       })
       .subscribe(
         (response: any) => {
-          this.router.navigate(['/']);
+          this.router.navigate(['/list-books']);
           this.toastersService.showSuccess('Successfully created');
         },
         (error: any) => {
