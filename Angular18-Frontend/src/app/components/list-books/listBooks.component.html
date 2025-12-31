@@ -1,0 +1,81 @@
+<div class="view-form">
+    <form class="view-form">
+      <h6>Book list</h6>
+      <mat-table  class="list-group-item" [dataSource]="ListBook">     
+        <!--
+        <ng-container matColumnDef="select">
+          <th mat-header-cell *matHeaderCellDef>
+            <mat-checkbox (change)="$event ? toggleAllRows() : null"
+                          [checked]="selection.hasValue() && isAllSelected()"
+                          [indeterminate]="selection.hasValue() && !isAllSelected()">
+            </mat-checkbox>
+          </th>
+          <td mat-cell *matCellDef="let row">
+            <mat-checkbox (click)="$event.stopPropagation()"
+                          (change)="$event ? selection.toggle(row) : null"
+                          [checked]="selection.isSelected(row)">
+            </mat-checkbox>
+          </td>
+        </ng-container> 
+        -->
+        
+       <!-- <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.Id}} </mat-cell>
+        </ng-container>       
+        -->
+         <ng-container matColumnDef="title">
+          <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{ row.Title }} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="authors">
+          <mat-header-cell *matHeaderCellDef> Authors </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{ (!!row.Authors ? row.Authors : 'n/a' ) }} </mat-cell>
+        </ng-container> 
+        <ng-container matColumnDef="series">
+          <mat-header-cell *matHeaderCellDef> Series </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{ (!!row.Series ? row.Series : 'n/a' ) }} </mat-cell>
+        </ng-container> 
+        <ng-container matColumnDef="ids">
+          <mat-header-cell *matHeaderCellDef> Ids </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{ (!!row.Ids ? row.Ids : 'n/a' ) }} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="category">
+          <mat-header-cell *matHeaderCellDef> Category </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{ (!!row.Category ? row.Category : 'n/a' ) }} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="published">
+          <mat-header-cell *matHeaderCellDef> Published </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{ (!!row.Published ? row.Published : 'n/a' ) }} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="publisher">
+          <mat-header-cell *matHeaderCellDef> Publisher </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{ (!!row.Publisher ? row.Publisher : 'n/a' ) }} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="languages">
+          <mat-header-cell *matHeaderCellDef> Languages </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{ (!!row.Languages ? row.Languages : 'n/a' ) }} </mat-cell>
+        </ng-container> 
+        <ng-container matColumnDef="tags">
+          <mat-header-cell *matHeaderCellDef> Tags </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{ (!!row.Tags ? row.Tags : 'n/a' ) }} </mat-cell>
+        </ng-container>        
+        <ng-container matColumnDef="formats">
+          <mat-header-cell *matHeaderCellDef> Formats </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{ (!!row.Formats ? row.Formats : 'n/a' ) }} </mat-cell>
+        </ng-container>      
+         <ng-container matColumnDef="modified">
+          <mat-header-cell *matHeaderCellDef> Modified </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.Modified}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="details">
+          <mat-header-cell *matHeaderCellDef>  </mat-header-cell>
+          <mat-cell *matCellDef="let row"> <button container-shape (click)="gotoDetails(row.Id)"> Details </button></mat-cell>
+        </ng-container>  
+         
+        <mat-header-row *matHeaderRowDef="[ 'title', 'modified', 'authors', 'series', 'ids', 'published', 'publisher', 'languages', 'tags', 'formats']"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: [ 'title', 'modified', 'authors', 'series', 'ids', 'published', 'publisher', 'languages', 'tags', 'formats', 'details']"></mat-row>
+      </mat-table>
+      <mat-paginator></mat-paginator>
+    </form>
+  </div>

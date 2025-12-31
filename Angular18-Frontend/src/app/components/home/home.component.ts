@@ -13,7 +13,7 @@ import { NavbarComponent } from '../navbar/navbar.component';
 })
 
 export class HomeComponent {
-  title: any = 'Frontend';
+  title: any = 'Book Store';
   date: any = new Date();
   isReloaded: any;
  

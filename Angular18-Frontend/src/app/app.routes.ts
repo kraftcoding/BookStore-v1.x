@@ -9,6 +9,8 @@ import { RevokeUserComponent } from './components/revoke-user/revokeUser.compone
 import { DeleteUserComponent } from './components/delete-user/deleteUser.component';
 import { authGuard } from './guards/auth.guard';
 import { UsersDetailsComponent } from './components/user-details/user-details.component';
+import { RegisterBookComponent } from './components/register-book/registerBook.component';
+import { ListBooksComponent } from './components/list-books/listBooks.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -22,4 +24,6 @@ export const routes: Routes = [
   { path: 'revoke-all', component: DeleteUserComponent, canActivate: [authGuard] },
   { path: 'delete-user', component: DeleteUserComponent, canActivate: [authGuard] },
   { path: 'user-details/:id', component: UsersDetailsComponent, canActivate: [authGuard] },
+  { path: 'register-book', component: RegisterBookComponent, canActivate: [authGuard] },
+  { path: 'list-books', component: ListBooksComponent, canActivate: [authGuard] },
 ];

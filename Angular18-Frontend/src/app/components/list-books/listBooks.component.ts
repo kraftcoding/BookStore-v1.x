@@ -1,4 +1,3 @@
-import { CommonModule, DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import {
   FormControl,
@@ -8,21 +7,23 @@ import {
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
-import { Router } from '@angular/router';
-import { ListUser } from 'src/app/models/ListUser.model';
 import { ToastersService } from 'src/app/services/toasters.service';
-import { UserService } from 'src/app/services/user.service';
+import { bookService } from 'src/app/services/book.service';
+import { CommonModule, DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
+import { Book } from 'src/app/models/Book.model';
 
 import {MatTableModule} from '@angular/material/table'
 //import {SelectionModel} from '@angular/cdk/collections'
 import {MatPaginatorModule} from '@angular/material/paginator';
 
+
 @Component({
-  selector: 'app-list-users',
+  selector: 'app-register',
   standalone: true,
   imports: [
     FormsModule,
@@ -35,44 +36,38 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatNativeDateModule,
     CommonModule,
     MatTableModule,
-    MatPaginatorModule    
+    MatPaginatorModule
   ],
   providers: [DatePipe],
-  templateUrl: './list-users.component.html',
-  styleUrl: './list-users.component.scss',
+  templateUrl: './listBooks.component.html',
+  styleUrl: './listBooks.component.scss',
 })
 
+export class ListBooksComponent {
 
-
-export class UsersComponent {
- 
-  ListUsers: ListUser[]; 
-
-  //initialSelection = [];
-  //allowMultiSelect = true;
-  //selection = new SelectionModel<ListUser>(this.allowMultiSelect, this.initialSelection);
+  ListBook: Book[]; 
 
   constructor(
-    private userService: UserService,
-    private toastersService: ToastersService,   
+    private bookService: bookService,
+    private toastersService: ToastersService,
+    private datePipe: DatePipe,
     private router: Router
   ) {}
 
-  gotoDetails(id: string){
-    this.router.navigate(['/user-details/' + id]);
+ gotoDetails(id: string){
+    this.router.navigate(['book-details/' + id]);
   }
 
   ngOnInit() {    
-    this.userService
-      .getUsers()
+    this.bookService
+      .getBooks()
       .subscribe(
         (response: any) => {
-          this.ListUsers = response;
+          this.ListBook = response;
         },
         (error: any) => {
           this.toastersService.handleError(error);
         }
       );
   }
-
 }

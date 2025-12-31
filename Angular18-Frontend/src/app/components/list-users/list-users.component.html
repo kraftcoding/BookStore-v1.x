@@ -1,6 +1,6 @@
 <div class="view-form">
     <form class="view-form">
-      <h2>User list</h2>
+      <h6>User list</h6>
       <mat-table  class="list-group-item" [dataSource]="ListUsers">     
         <!--
         <ng-container matColumnDef="select">
@@ -35,13 +35,13 @@
           <mat-header-cell *matHeaderCellDef> Revoked </mat-header-cell>
           <mat-cell *matCellDef="let row"> {{(!!row.RefreshToken ? 'No' : 'yes' )}} </mat-cell>
         </ng-container> 
-        <ng-container matColumnDef="id">
+        <ng-container matColumnDef="details">
           <mat-header-cell *matHeaderCellDef>  </mat-header-cell>
           <mat-cell *matCellDef="let row"> <button container-shape (click)="gotoDetails(row.Id)"> Details </button></mat-cell>
         </ng-container>  
          
-        <mat-header-row *matHeaderRowDef="['username', 'email', 'phonenumber', 'revoked', 'id']"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: [ 'username', 'email', 'phonenumber', 'revoked', 'id']"></mat-row>
+        <mat-header-row *matHeaderRowDef="['username', 'email', 'phonenumber', 'revoked', 'details']"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: [ 'username', 'email', 'phonenumber', 'revoked', 'details']"></mat-row>
       </mat-table>
       <mat-paginator></mat-paginator>
     </form>

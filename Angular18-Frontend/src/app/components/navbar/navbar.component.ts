@@ -98,4 +98,12 @@ export class NavbarComponent {
   homeRedirect() {
     this.router.navigate(['/']);
   }
+
+  registerBook() {
+    this.router.navigate(['/register-book']);
+  }
+
+  listBooks() {
+    this.router.navigate(['/list-books']);
+  }
 }

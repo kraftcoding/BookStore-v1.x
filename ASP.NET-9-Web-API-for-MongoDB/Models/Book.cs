@@ -10,14 +10,28 @@ namespace BookStoreApi.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; }
 
-        [BsonElement("Name")]
-        [JsonPropertyName("Name")]
-        public string BookName { get; set; } = null!;
+        public DateTime? Modified { get; set; }
 
-        public decimal Price { get; set; }
+        [BsonElement("Title")]
+        [JsonPropertyName("Title")]
+        public string Title { get; set; }
 
-        public string Category { get; set; } = null!;
+        public string? Ids { get; set; }
 
-        public string Author { get; set; } = null!;
+        public string? Category { get; set; }
+
+        public string? Authors { get; set; }
+
+        public string? Series { get; set; }
+
+        public DateTime? Published { get; set; }
+
+        public string? Publisher { get; set; }
+
+        public string? Languages { get; set; }
+
+        public string? Tags { get; set; }
+
+        public string? Formats { get; set; }
     }
 }
