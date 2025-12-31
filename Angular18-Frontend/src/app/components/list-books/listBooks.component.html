@@ -72,9 +72,12 @@
           <mat-header-cell *matHeaderCellDef>  </mat-header-cell>
           <mat-cell *matCellDef="let row"> <button container-shape (click)="gotoDetails(row.Id)"> Details </button></mat-cell>
         </ng-container>  
-         
-        <mat-header-row *matHeaderRowDef="[ 'title', 'modified', 'authors', 'series', 'ids', 'published', 'publisher', 'languages', 'tags', 'formats']"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: [ 'title', 'modified', 'authors', 'series', 'ids', 'published', 'publisher', 'languages', 'tags', 'formats', 'details']"></mat-row>
+         <ng-container matColumnDef="delete">
+          <mat-header-cell *matHeaderCellDef>  </mat-header-cell>
+          <mat-cell *matCellDef="let row"> <button container-shape (click)="deleteBook(row.Id)"> Delete </button></mat-cell>
+        </ng-container> 
+        <mat-header-row *matHeaderRowDef="[ 'title', 'modified', 'authors', 'series', 'ids', 'published', 'publisher', 'languages', 'tags', 'formats', 'details', 'delete']"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: [ 'title', 'modified', 'authors', 'series', 'ids', 'published', 'publisher', 'languages', 'tags', 'formats', 'details', 'delete']"></mat-row>
       </mat-table>
       <mat-paginator></mat-paginator>
     </form>

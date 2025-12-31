@@ -58,6 +58,10 @@ export class ListBooksComponent {
     this.router.navigate(['book-details/' + id]);
   }
 
+  deleteBook(id: string){
+    console.log();
+  }
+
   ngOnInit() {    
     this.bookService
       .getBooks()
