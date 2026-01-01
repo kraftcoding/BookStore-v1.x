@@ -1,5 +1,7 @@
 # Book Store v1.x 
 
-## (WORKING ON)
+This project enables seamless book record management through a Web UI, with user roles and token-based authentication for registered users. Policy-based authorization ensures secure endpoint access. The goal? To create a scalable, high-availability solution for containerized apps, decoupling infrastructure and software delivery. MongoDB's Replica Set and Sharding configurations ensure data redundancy and performance.
 
-Book Store v1.x solution built with Angular 18, MongoDB, Docker and .Net 8; enables to manage books records with the possibility to manage them by the Web UI and user roles. Implements token-based authentication for registered users and policy-based authorization in the endpoints.
+For more details, check out the documentation included in the solution: https://github.com/kraftcoding/BookStore-v1.x/blob/master/DOCS/BookStore%20solution%20-%20Technical%20Document.pdf
+
+
