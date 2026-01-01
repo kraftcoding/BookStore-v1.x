@@ -11,7 +11,7 @@ public class VersionController : ControllerBase
     [HttpGet]
     public async Task<string> Get()
     {
-        var task = new Func<Task<string>>(async () => "0.1");
+        var task = new Func<Task<string>>(async () => "1.0");
         var taskResult = await task();
        
         return taskResult;
