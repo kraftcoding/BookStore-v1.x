@@ -1,7 +1,7 @@
 ﻿NOTE: The project must be created with containerization features ot to add Docker support
 
 docker login
-docker build -t kraftcoding/aspnet9webapiformongodb:local .
+docker build -t kraftcoding/aspnet9webapiformongodb:v1.0 .
 docker images
-docker push kraftcoding/aspnet9webapiformongodb:local
-docker pull kraftcoding/aspnet9webapiformongodb:local
+docker push kraftcoding/aspnet9webapiformongodb:v1.0
+docker pull kraftcoding/aspnet9webapiformongodb:v1.0
