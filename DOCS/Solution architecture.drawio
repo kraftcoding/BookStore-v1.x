@@ -1,0 +1,46 @@
+<mxfile host="Electron" modified="2026-01-01T08:05:37.986Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.2.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="vhSkBBxJ4fO5a_rczFqG" version="24.2.5" type="device">
+  <diagram name="Page-1" id="jXjDositfKP0HepiMTg8">
+    <mxGraphModel dx="1434" dy="844" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="OGU63jPK-3O-d6B5Ssqe-4" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="300" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="OGU63jPK-3O-d6B5Ssqe-5" value="Front End" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="350" y="270" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="OGU63jPK-3O-d6B5Ssqe-6" value="Angular App" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Docker.svg;" vertex="1" parent="1">
+          <mxGeometry x="355" y="330" width="50" height="41" as="geometry" />
+        </mxCell>
+        <mxCell id="OGU63jPK-3O-d6B5Ssqe-7" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="570" y="300" width="120" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="OGU63jPK-3O-d6B5Ssqe-8" value="Back End" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="600" y="270" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="OGU63jPK-3O-d6B5Ssqe-10" value="Secured role based&amp;nbsp;&lt;div&gt;Web API&lt;/div&gt;" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Docker.svg;" vertex="1" parent="1">
+          <mxGeometry x="605" y="340" width="50" height="41" as="geometry" />
+        </mxCell>
+        <mxCell id="OGU63jPK-3O-d6B5Ssqe-11" value="MongoDB Storage&amp;nbsp;&lt;div&gt;Cluster&lt;/div&gt;" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Docker.svg;" vertex="1" parent="1">
+          <mxGeometry x="605" y="480" width="50" height="41" as="geometry" />
+        </mxCell>
+        <mxCell id="OGU63jPK-3O-d6B5Ssqe-12" value="" style="shape=flexArrow;endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.008;entryY=0.21;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="OGU63jPK-3O-d6B5Ssqe-4" target="OGU63jPK-3O-d6B5Ssqe-7">
+          <mxGeometry width="100" height="100" relative="1" as="geometry">
+            <mxPoint x="470" y="450" as="sourcePoint" />
+            <mxPoint x="570" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="OGU63jPK-3O-d6B5Ssqe-17" value="" style="shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#4495D1;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;shape=mxgraph.veeam.storage_cluster;" vertex="1" parent="1">
+          <mxGeometry x="710.75" y="500" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="OGU63jPK-3O-d6B5Ssqe-22" value="" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/web_server.svg;" vertex="1" parent="1">
+          <mxGeometry x="370" y="430" width="40" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="OGU63jPK-3O-d6B5Ssqe-24" value="" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/azure_stack/User_Subscriptions.svg;" vertex="1" parent="1">
+          <mxGeometry x="710.75" y="345" width="51.52" height="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
