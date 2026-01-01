@@ -13,6 +13,7 @@ import { RegisterBookComponent } from './components/register-book/registerBook.c
 import { ListBooksComponent } from './components/list-books/listBooks.component';
 import { BookDetailsComponent } from './components/book-deails/book-details.component';
 import { ListSearchBooksComponent } from './components/listsearch-books/listsearch-books.component';
+import { EditBookComponent } from './components/edit-book/editBook.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent},
@@ -30,4 +31,5 @@ export const routes: Routes = [
   { path: 'list-books', component: ListBooksComponent},
   { path: 'book-details/:id', component: BookDetailsComponent},
   { path: 'listsearch-book/:id', component: ListSearchBooksComponent},
+  { path: 'edit-book/:id', component: EditBookComponent},
 ];

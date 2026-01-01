@@ -27,10 +27,14 @@ mat-form-field {
 }
 
 button {
-  width: 100%;
   padding: 10px;
-  color: #797fa1;
+  color: #6173da;
+  background-color: transparent;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.title-cell{
+  font-weight: bold;
 }

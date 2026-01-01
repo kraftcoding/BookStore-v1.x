@@ -1,0 +1,53 @@
+<div class="registration-container">
+    <form class="registration-form">
+      <h6>Edit book</h6>
+      <mat-form-field class="margin-bottom">
+        <mat-label>Title</mat-label>
+        <input type="text" matInput [formControl]="titleFormControl" placeholder="Ex. Journey to the Center of the Earth" autocomplete="off">
+        <mat-error *ngIf="titleFormControl.hasError('required')">Title is required</mat-error>
+      </mat-form-field>       
+      <mat-form-field class="margin-bottom">
+        <mat-label>Authors</mat-label>
+        <input type="text" matInput [formControl]="authorsFormControl"  placeholder="Ex. Authors" autocomplete="off">        
+      </mat-form-field> 
+      <mat-form-field class="margin-bottom">      
+        <mat-label>Ids</mat-label>
+        <input type="text" matInput [formControl]="idsFormControl"  placeholder="Ex. Ids" autocomplete="off">        
+      </mat-form-field>  
+       <mat-form-field class="margin-bottom">      
+        <mat-label>Category</mat-label>
+        <input type="text" matInput [formControl]="categoryFormControl"  placeholder="Ex. Ids" autocomplete="off">        
+      </mat-form-field>     
+      <mat-form-field class="margin-bottom">      
+        <mat-label>Series</mat-label>
+        <input type="text" matInput [formControl]="seriesFormControl"  placeholder="Ex. Series" autocomplete="off">        
+      </mat-form-field>      
+      <mat-form-field class="margin-bottom">
+        <input matInput [matDatepicker]="picker" [formControl]="publishedFormControl">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="publishedFormControl.hasError('required')">Published</mat-error>        
+      </mat-form-field> 
+      <mat-form-field class="margin-bottom">
+        <mat-label>Publisher</mat-label>
+        <input type="text" matInput [formControl]="publisherFormControl"  placeholder="Ex. Publisher" autocomplete="off">        
+      </mat-form-field>
+      <mat-form-field class="margin-bottom">
+        <mat-label>Languages</mat-label>
+        <input type="text" matInput [formControl]="languagesFormControl"  placeholder="Ex. Languages" autocomplete="off">        
+      </mat-form-field>
+      <mat-form-field class="margin-bottom">
+        <mat-label>Tags</mat-label>
+        <input type="text" matInput [formControl]="tagsFormControl"  placeholder="Ex. Tags" autocomplete="off">        
+      </mat-form-field> 
+      <mat-form-field class="margin-bottom">
+        <mat-label>Formats</mat-label>
+        <input type="text" matInput [formControl]="formatsFormControl"  placeholder="Ex. Formats" autocomplete="off">        
+      </mat-form-field> 
+      <mat-form-field class="margin-bottom">
+        <mat-label>Modified</mat-label>
+        <input type="text" matInput [formControl]="modifiedFormControl" autocomplete="off" >       
+      </mat-form-field>   
+      <button mat-raised-button color="primary" type="button" (click)="updateBook()">Save</button>
+    </form>
+  </div>

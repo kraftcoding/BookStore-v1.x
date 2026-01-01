@@ -57,6 +57,13 @@ export class BookService {
       environment.apiUrl +'/books/' + id
     );
   }
+
+  updateBook(dto: any): any {
+    return this.http.put(
+      environment.apiUrl + '/books',
+      dto
+    );
+  }
   
   /*
   getByEmail(email: string): any {

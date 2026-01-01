@@ -26,7 +26,7 @@
         -->
          <ng-container matColumnDef="title">
           <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
-          <mat-cell *matCellDef="let row"> {{ row.Title }} </mat-cell>
+          <mat-cell class="title-cell" *matCellDef="let row"> {{ row.Title }} </mat-cell>
         </ng-container>
         <ng-container matColumnDef="authors">
           <mat-header-cell *matHeaderCellDef> Authors </mat-header-cell>
@@ -75,24 +75,40 @@
               </ng-container>
               <ng-container matColumnDef="details">
                 <mat-header-cell *matHeaderCellDef>  </mat-header-cell>
-                <mat-cell *matCellDef="let row"> <button container-shape (click)="gotoDetails(row.Id)"> Details </button></mat-cell>
+                <mat-cell *matCellDef="let row"> <button (click)="gotoDetails(row.Id)"><mat-icon>visibility</mat-icon></button></mat-cell>
+              </ng-container>
+               <ng-container matColumnDef="edit">
+                <mat-header-cell *matHeaderCellDef>  </mat-header-cell>
+                <mat-cell *matCellDef="let row"> <button (click)="editDetails(row.Id)"><mat-icon>edit</mat-icon></button></mat-cell>
               </ng-container>
                <ng-container matColumnDef="delete">
                   <mat-header-cell *matHeaderCellDef>  </mat-header-cell>
-                  <mat-cell *matCellDef="let row"> <button container-shape (click)="deleteBook(row.Id)"> Delete </button></mat-cell>
+                  <mat-cell *matCellDef="let row"> <button (click)="deleteBook(row.Id)"><mat-icon>delete</mat-icon></button></mat-cell>
                 </ng-container> 
 
-              <mat-header-row *matHeaderRowDef="[ 'title', 'authors', 'category', 'published', 'modified', 'ids', 'details', 'delete']"></mat-header-row>
-              <mat-row *matRowDef="let row; columns: [ 'title',  'authors', 'category', 'published',  'modified', 'ids', 'details', 'delete']"></mat-row>
+              <mat-header-row *matHeaderRowDef="[ 'title', 'authors', 'category', 'published', 'modified', 'ids', 'details', 'edit', 'delete']"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: [ 'title',  'authors', 'category', 'published',  'modified', 'ids', 'details', 'edit', 'delete']"></mat-row>
             }          
             @else {
-              <ng-container matColumnDef="details">
+              <ng-container matColumnDef="modified">
+                <mat-header-cell *matHeaderCellDef> Modified </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.Modified}} </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="ids">
+                <mat-header-cell *matHeaderCellDef> Ids </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{ (!!row.Ids ? row.Ids : 'n/a' ) }} </mat-cell>
+              </ng-container>              
+               <ng-container matColumnDef="details">
                 <mat-header-cell *matHeaderCellDef>  </mat-header-cell>
-                <mat-cell *matCellDef="let row"> <button container-shape (click)="gotoDetails(row.Id)"> Details </button></mat-cell>
+                <mat-cell *matCellDef="let row"> <button (click)="gotoDetails(row.Id)"><mat-icon>visibility</mat-icon></button></mat-cell>
+              </ng-container>        
+               <ng-container matColumnDef="edit">
+                <mat-header-cell *matHeaderCellDef>  </mat-header-cell>
+                <mat-cell *matCellDef="let row"> <button (click)="editDetails(row.Id)"><mat-icon>edit</mat-icon></button></mat-cell>
               </ng-container>
             
-              <mat-header-row *matHeaderRowDef="[ 'title', 'authors', 'category',  'published', 'details']"></mat-header-row>
-              <mat-row *matRowDef="let row; columns: [ 'title',  'authors', 'category', 'published', 'details']"></mat-row>
+              <mat-header-row *matHeaderRowDef="[ 'title', 'authors', 'category',  'published', 'modified', 'ids', 'details', 'edit']"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: [ 'title',  'authors', 'category', 'published', 'modified', 'ids', 'details', 'edit']"></mat-row>
             }          
         }
         @else{ 

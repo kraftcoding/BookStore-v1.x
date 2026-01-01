@@ -1,6 +1,6 @@
 <div class="view-form">
     <form class="view-form">
-      <h6>User list</h6>
+      <h6>Users</h6>
       <mat-table  class="list-group-item" [dataSource]="ListUsers">     
         <!--
         <ng-container matColumnDef="select">
@@ -21,7 +21,7 @@
         
         <ng-container matColumnDef="username">
           <mat-header-cell *matHeaderCellDef> User Name </mat-header-cell>
-          <mat-cell *matCellDef="let row"> {{row.UserName}} </mat-cell>
+          <mat-cell class="title-cell" *matCellDef="let row"> {{row.UserName}} </mat-cell>
         </ng-container>       
         <ng-container matColumnDef="email">
           <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
@@ -37,7 +37,7 @@
         </ng-container> 
         <ng-container matColumnDef="details">
           <mat-header-cell *matHeaderCellDef>  </mat-header-cell>
-          <mat-cell *matCellDef="let row"> <button container-shape (click)="gotoDetails(row.Id)"> Details </button></mat-cell>
+          <mat-cell *matCellDef="let row"> <button container-shape (click)="gotoDetails(row.Id)"> <mat-icon>visibility</mat-icon> </button></mat-cell>
         </ng-container>  
          
         <mat-header-row *matHeaderRowDef="['username', 'email', 'phonenumber', 'revoked', 'details']"></mat-header-row>

@@ -21,6 +21,7 @@ import {MatTableModule} from '@angular/material/table'
 //import {SelectionModel} from '@angular/cdk/collections'
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { UserService } from 'src/app/services/user.service';
+import { MatIcon } from "@angular/material/icon";
 
 @Component({
   selector: 'app-register',
@@ -36,8 +37,9 @@ import { UserService } from 'src/app/services/user.service';
     MatNativeDateModule,
     CommonModule,
     MatTableModule,
-    MatPaginatorModule
-  ],
+    MatPaginatorModule,
+    MatIcon
+],
   providers: [DatePipe],
   templateUrl: './listBooks.component.html',
   styleUrl: './listBooks.component.scss',
@@ -59,6 +61,10 @@ export class ListBooksComponent {
 
  gotoDetails(id: string){
     this.router.navigate(['book-details/' + id]);
+  }
+
+  editDetails(id: string){
+    this.router.navigate(['edit-book/' + id]);
   }
 
   deleteBook(id: string){

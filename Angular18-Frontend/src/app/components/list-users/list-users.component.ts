@@ -20,6 +20,7 @@ import { UserService } from 'src/app/services/user.service';
 import {MatTableModule} from '@angular/material/table'
 //import {SelectionModel} from '@angular/cdk/collections'
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatIcon } from "@angular/material/icon";
 
 @Component({
   selector: 'app-list-users',
@@ -35,8 +36,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatNativeDateModule,
     CommonModule,
     MatTableModule,
-    MatPaginatorModule    
-  ],
+    MatPaginatorModule,
+    MatIcon
+],
   providers: [DatePipe],
   templateUrl: './list-users.component.html',
   styleUrl: './list-users.component.scss',
