@@ -11,8 +11,6 @@ Create a Docker network
 
 The first step is to create a Docker network. This network will let each of your containers running in this network see each other. To create a network, run the docker network create command
 
-docker pull mongo
-
 docker network create mongoCluster
 
 

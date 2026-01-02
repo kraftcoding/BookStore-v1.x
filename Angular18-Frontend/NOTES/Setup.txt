@@ -1,2 +1,2 @@
 docker login
-docker build -t Kraftcoding/angular18-frontend:v1.0 .
+docker build -t kraftcoding/angular18-frontend:v1.0 .
