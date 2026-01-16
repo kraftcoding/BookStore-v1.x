@@ -29,7 +29,9 @@ COPY . .
 # Use this line if modules are in the same directory as Dockerfile
 # RUN npm run build
 # For GitHub Actions, adjust the path as necessary
-RUN npm cache clean --force && npm install
+RUN npm cache clean --force
+RUN npm install # Or npm ci for production
+COPY . .
 RUN npm run build
 
 # =========================================
