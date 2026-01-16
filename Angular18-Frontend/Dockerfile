@@ -14,6 +14,9 @@ FROM node:${NODE_VERSION} AS builder
 WORKDIR /app
 
 # Copy package-related files first to leverage Docker's caching mechanism
+# Use this line if nginx.conf is in the same directory as Dockerfile
+# COPY package.json package-lock.json ./
+# Adjust the path as necessary (i.e. to launch github actions) 
 COPY Angular18-Frontend/package.json Angular18-Frontend/package-lock.json ./
 
 # Install project dependencies using npm ci (ensures a clean, reproducible install)
@@ -23,7 +26,10 @@ RUN --mount=type=cache,target=/root/.npm npm ci
 COPY . .
 
 # Build the Angular application
-RUN npm run build 
+# Use this line if modules are in the same directory as Dockerfile
+# RUN npm run build
+# For GitHub Actions, adjust the path as necessary
+RUN /bin/sh -c "npm install && npm run build"
 
 # =========================================
 # Stage 2: Prepare Nginx to Serve Static Files
