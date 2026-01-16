@@ -2,9 +2,7 @@ name: angular18-frontend
 on:
   push:
     branches:
-      — '*'
-    tags:
-      — '*'
+      - deploy
 jobs:
   deploy:
     name: build && push image to docker hub
@@ -25,6 +23,6 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: Dockerfile
+          file: Angular18-Frontend/Dockerfile
           push: true
           tags: book-store-v1.x/angular18-frontend:latest
