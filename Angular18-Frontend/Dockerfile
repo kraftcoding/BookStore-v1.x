@@ -29,7 +29,8 @@ COPY . .
 # Use this line if modules are in the same directory as Dockerfile
 # RUN npm run build
 # For GitHub Actions, adjust the path as necessary
-RUN /bin/sh -c "npm install && npm run build"
+RUN /bin/sh -c npm install
+RUN /bin/sh -c npm run build
 
 # =========================================
 # Stage 2: Prepare Nginx to Serve Static Files
