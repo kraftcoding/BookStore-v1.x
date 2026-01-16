@@ -1,9 +1,6 @@
 # =========================================
 # Stage 1: Build the Angular Application
 # =========================================
-# =========================================
-# Stage 1: Build the Angular Application
-# =========================================
 ARG NODE_VERSION=22.12.0
 ARG NGINX_VERSION=1.26.3
 
@@ -15,9 +12,9 @@ WORKDIR /app
 
 # Copy package-related files first to leverage Docker's caching mechanism
 # Use this line if nginx.conf is in the same directory as Dockerfile
-# COPY package.json package-lock.json ./
+COPY package.json package-lock.json ./
 # Adjust the path as necessary (i.e. to launch github actions) 
-COPY Angular18-Frontend/package.json Angular18-Frontend/package-lock.json ./
+# COPY Angular18-Frontend/package.json Angular18-Frontend/package-lock.json ./
 
 # Install project dependencies using npm ci (ensures a clean, reproducible install)
 RUN --mount=type=cache,target=/root/.npm npm ci
@@ -27,12 +24,12 @@ COPY . .
 
 # Build the Angular application
 # Use this line if modules are in the same directory as Dockerfile
-# RUN npm run build
-# For GitHub Actions, adjust the path as necessary
-RUN npm cache clean --force
-RUN npm install # Or npm ci for production
-COPY . .
 RUN npm run build
+# For GitHub Actions, adjust the path as necessary
+# RUN npm cache clean --force
+# RUN npm install # Or npm ci for production
+# COPY . .
+# RUN npm run build
 
 # =========================================
 # Stage 2: Prepare Nginx to Serve Static Files
@@ -45,9 +42,9 @@ USER nginx
 
 # Copy custom Nginx config
 # Use this line if nginx.conf is in the same directory as Dockerfile
-# COPY nginx.conf /etc/nginx/nginx.conf
+COPY nginx.conf /etc/nginx/nginx.conf
 # Adjust the path as necessary (i.e. to launch github actions)
-COPY Angular18-Frontend/nginx.conf /etc/nginx/nginx.conf 
+# COPY Angular18-Frontend/nginx.conf /etc/nginx/nginx.conf 
 
 # Copy the static build output from the build stage to Nginx's default HTML serving directory
 COPY --chown=nginx:nginx --from=builder /app/dist/*/browser /usr/share/nginx/html
