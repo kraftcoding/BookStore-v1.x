@@ -35,7 +35,10 @@ FROM nginxinc/nginx-unprivileged:${NGINX_VERSION} AS runner
 USER nginx
 
 # Copy custom Nginx config
-COPY nginx.conf /etc/nginx/nginx.conf
+# Use this line if nginx.conf is in the same directory as Dockerfile
+# COPY nginx.conf /etc/nginx/nginx.conf
+# Adjust the path as necessary (i.e. to launch github actions)
+COPY Angular18-Frontend/nginx.conf /etc/nginx/nginx.conf 
 
 # Copy the static build output from the build stage to Nginx's default HTML serving directory
 COPY --chown=nginx:nginx --from=builder /app/dist/*/browser /usr/share/nginx/html
