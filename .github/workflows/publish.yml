@@ -1,4 +1,4 @@
-name: Arkitect
+name: angular18-frontend
 on:
   push:
     branches:
@@ -14,7 +14,7 @@ on:
       id: meta
       uses: crazy-max/ghaction-docker-meta@v2
       with:
-        images: phparkitect/phparkitect
+        images: kraftcoding/angular18-frontend:v1.0
         tags: |
           type=raw,value=latest,enable=${{ endsWith(GitHub.ref, 'master') }}
           type=ref,event=tag
